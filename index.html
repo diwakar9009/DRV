@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diwakar Vishwakarma | Digital Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+    <style>
+        /* --- CSS VARIABLES (Colors) --- */
+        :root {
+            --primary: #2c3e50; /* Professional Dark Blue/Grey */
+            --accent: #3498db;  /* Bright Blue for Highlights */
+            --bg: #f4f7f6;
+            --text: #333;
+            --white: #fff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- RESET & BASIC STYLES --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; transition: color 0.3s; }
+        ul { list-style: none; }
+
+        /* --- LAYOUT UTILITIES --- */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        section { padding: 60px 0; }
+
+        /* --- ANIMATIONS (Fade In Up) --- */
+        [data-aos] {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        [data-aos].aos-animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- HERO / HEADER SECTION --- */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a252f 100%);
+            color: var(--white);
+            padding: 100px 0 60px 0;
+            text-align: center;
+            position: relative;
+        }
+        header h1 { font-weight: 600; font-size: 2.5rem; margin-bottom: 10px; }
+        header p { font-weight: 300; font-size: 1.1rem; opacity: 0.8; margin-bottom: 20px;}
+        .badge {
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* --- ABOUT SECTION --- */
+        #about { text-align: center; }
+        h2 { font-weight: 600; color: var(--primary); margin-bottom: 30px; position: relative; display: inline-block;}
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px; height: 3px;
+            background: var(--accent);
+            margin: 10px auto 0 auto;
+            border-radius: 2px;
+        }
+        .about-text { max-width: 700px; margin: 0 auto; font-size: 1.05rem;}
+
+        /* --- SKILLS SECTION (GRID) --- */
+        #skills { background-color: var(--white); }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .skill-card {
+            background: var(--bg);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            border-left: 4px solid transparent;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .skill-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+        .skill-card ion-icon { font-size: 2rem; color: var(--accent); margin-bottom: 15px; }
+        .skill-card h3 { font-weight: 600; color: var(--primary); margin-bottom: 10px; }
+        .skill-card ul li { font-size: 0.95rem; margin-bottom: 5px; }
+
+        /* --- PROJECTS SECTION (CARDS) --- */
+        #projects .project-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        .project-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(52, 152, 219, 0.03); /* Subtle accent tint */
+            z-index: 0;
+        }
+        .project-card-content { position: relative; z-index: 1; }
+        .project-card h3 { color: var(--accent); font-weight: 600; margin-bottom: 10px; }
+        .project-card p { margin-bottom: 15px; font-size: 0.95rem; }
+        .tag-container { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tag {
+            background: #eee;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            color: #666;
+        }
+
+        /* --- CONTACT SECTION --- */
+        #contact { background-color: var(--primary); color: var(--white); text-align: center; }
+        #contact h2 { color: var(--white); }
+        .contact-links { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 40px;}
+        .contact-item { font-size: 1.1rem; display: flex; align-items: center; gap: 10px;}
+        .contact-item ion-icon { font-size: 1.4rem; color: var(--accent); }
+        .contact-item a:hover { color: var(--accent); }
+
+        footer {
+            background-color: #1a252f;
+            color: rgba(255, 255, 255, 0.5);
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.8rem;
+        }
+
+        /* --- RESPONSIVE ADJUSTMENTS --- */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            section { padding: 40px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container" data-aos>
+            <h1>Diwakar Vishwakarma</h1>
+            <p>Operations Specialist & Automation Developer</p>
+            <span class="badge">Based in Gorakhpur</span>
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="container" data-aos>
+            <h2>Professional Profile</h2>
+            <p class="about-text">
+                Technically-driven professional with a strong focus on operational efficiency. 
+                I specialize in <strong>Python automation</strong>, Telegram Bot development, 
+                and web building to streamline business workflows, reduce manual error, and 
+                enhance digital presence.
+            </p>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h2 data-aos>Core Competencies</h2>
+            <div class="skills-grid">
+                
+                <div class="skill-card" data-aos>
+                    <ion-icon name="code-working-outline"></ion-icon>
+                    <h3>Automation</h3>
+                    <ul>
+                        <li>Python Scripting</li>
+                        <li>Telegram Bot API</li>
+                        <li>GitHub Actions</li>
+                        <li>Workflow Optimization</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card" data-aos>
+                    <ion-icon name="globe-outline"></ion-icon>
+                    <h3>Web & SEO</h3>
+                    <ul>
+                        <li>Web Building</li>
+                        <li>Technical SEO</li>
+                        <li>Google Search Console</li>
+                        <li>Vercel Deployment</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card" data-aos>
+                    <ion-icon name="briefcase-outline"></ion-icon>
+                    <h3>Operations</h3>
+                    <ul>
+                        <li>Front-Office Management</li>
+                        <li>Guest Relations</li>
+                        <li>Digital Booking Systems</li>
+                        <li>Data Scraping & Analysis</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2 data-aos>Key Projects</h2>
+            <div class="project-list">
+
+                <div class="project-card" data-aos>
+                    <div class="project-card-content">
+                        <h3>Multi-Source Job Alert Bot</h3>
+                        <p>Developed a GitHub-hosted automation tool that aggregates job vacancies from various portals into a centralized Telegram channel.</p>
+                        <div class="tag-container">
+                            <span class="tag">Python</span>
+                            <span class="tag">Telegram API</span>
+                            <span class="tag">GitHub Actions</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos>
+                    <div class="project-card-content">
+                        <h3>Affiliate Deal Automation</h3>
+                        <p>Built a scraper-based system that automatically formats and posts top Amazon deals, including star ratings and optimized affiliate links.</p>
+                        <div class="tag-container">
+                            <span class="tag">Python</span>
+                            <span class="tag">Web Scraping</span>
+                            <span class="tag">API Integration</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos>
+                    <div class="project-card-content">
+                        <h3>OpenClaw Gateway Integration</h3>
+                        <p>Successfully configured local automation gateways for seamless Node.js and Telegram workflow management.</p>
+                        <div class="tag-container">
+                            <span class="tag">Node.js</span>
+                            <span class="tag">Gateway</span>
+                            <span class="tag">Automation</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container" data-aos>
+            <h2>Get In Touch</h2>
+            <p>I am eager to contribute my technical and operational skills to your team.</p>
+            
+            <div class="contact-links">
+                <div class="contact-item">
+                    <ion-icon name="logo-whatsapp"></ion-icon>
+                    <a href="https://wa.me/[YourNumberInInternationalFormat]" target="_blank">[Your Phone Number]</a>
+                </div>
+                <div class="contact-item">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    <a href="mailto:[YourEmailAddress]">[Your Email Address]</a>
+                </div>
+                <div class="contact-item">
+                    <ion-icon name="logo-github"></ion-icon>
+                    <a href="[YourGitHubLink]" target="_blank">GitHub Profile</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Diwakar Vishwakarma. Built with Python & hosted on Vercel.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple script to detect when elements enter the viewport and add the animation class
+        const aosElements = document.querySelectorAll('[data-aos]');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('aos-animate');
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        aosElements.forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
