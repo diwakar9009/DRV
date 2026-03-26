@@ -12,101 +12,126 @@
             --primary: #3b82f6; 
             --accent: #06b6d4;
             --dark: #070b14;
-            --glass: rgba(255, 255, 255, 0.03);
-            --text: #f1f5f9;
+            --glass: rgba(255, 255, 255, 0.05);
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --nav-height: 85px;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        /* Reset & Base */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
             background-color: var(--dark); 
-            color: var(--text); 
+            color: var(--text-main); 
             line-height: 1.6;
-            overflow-x: hidden;
+            width: 100%;
         }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .container { 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 0 24px; 
+        }
 
-        /* Fancy DRV Logo & Nav */
+        /* Fixed Navigation */
         nav {
-            position: fixed; top: 0; width: 100%; z-index: 1000;
-            background: rgba(7, 11, 20, 0.8); backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            position: fixed; top: 0; width: 100%; height: var(--nav-height); z-index: 1000;
+            background: rgba(7, 11, 20, 0.95); backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            display: flex; align-items: center;
         }
-        .nav-content { height: 90px; display: flex; justify-content: space-between; align-items: center; }
+        .nav-content { display: flex; justify-content: space-between; align-items: center; width: 100%; }
         
         .logo-fancy { 
             font-family: 'Orbitron', sans-serif; 
-            font-size: 2.2rem; 
+            font-size: 1.8rem; 
             font-weight: 900; 
             color: #fff; 
             text-decoration: none;
             letter-spacing: 4px;
-            text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
-            background: linear-gradient(to right, #fff, var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px var(--primary);
         }
 
-        .nav-links { display: flex; gap: 35px; }
-        .nav-links a { font-weight: 600; font-size: 0.9rem; color: #94a3b8; text-decoration: none; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
-        .nav-links a:hover { color: var(--primary); text-shadow: 0 0 8px var(--primary); }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { font-weight: 600; font-size: 0.8rem; color: var(--text-muted); text-decoration: none; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
+        .nav-links a:hover { color: var(--primary); }
 
-        /* Hero */
-        .hero { padding: 220px 0 120px; text-align: center; position: relative; }
-        .hero h1 { font-size: clamp(3rem, 10vw, 5.5rem); font-weight: 800; letter-spacing: -3px; line-height: 1; margin-bottom: 30px; }
-        .hero span { color: var(--primary); text-shadow: 0 0 30px rgba(59, 130, 246, 0.5); }
-        .hero p { font-size: 1.25rem; color: #94a3b8; max-width: 650px; margin: 0 auto 50px; }
+        /* Hero Section */
+        .hero { 
+            min-height: 90vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; padding: calc(var(--nav-height) + 40px) 0 60px;
+            background: radial-gradient(circle at center, #111827 0%, #070b14 100%);
+        }
+        .hero h1 { font-size: clamp(2.8rem, 9vw, 5.5rem); font-weight: 800; line-height: 1; margin-bottom: 24px; letter-spacing: -2px; }
+        .hero h1 span { color: var(--primary); text-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+        .hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 650px; margin-bottom: 40px; }
 
-        /* Buttons */
-        .btn { padding: 18px 40px; border-radius: 100px; font-weight: 800; text-decoration: none; display: inline-flex; align-items: center; gap: 12px; transition: 0.4s; border: none; cursor: pointer; }
-        .btn-primary { background: var(--primary); color: white; box-shadow: 0 0 25px rgba(59, 130, 246, 0.4); }
-        .btn-outline { border: 2px solid rgba(255,255,255,0.1); color: white; background: transparent; }
-        .btn:hover { transform: translateY(-5px) scale(1.05); }
+        /* Button Styling */
+        .btn-group { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+        .btn { padding: 18px 38px; border-radius: 100px; font-weight: 800; text-decoration: none; display: inline-flex; align-items: center; gap: 12px; transition: 0.3s ease; border: none; font-size: 1rem; }
+        .btn-primary { background: var(--primary); color: white; box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2); }
+        .btn-outline { border: 1.5px solid rgba(255,255,255,0.2); color: white; }
+        .btn:hover { transform: translateY(-4px); filter: brightness(1.1); }
 
-        /* Project Grid */
-        section { padding: 120px 0; }
-        .section-title { margin-bottom: 70px; text-align: center; }
-        .section-title h2 { font-size: 3rem; font-weight: 800; margin-bottom: 15px; }
+        /* Section Layouts */
+        section { padding: 120px 0; border-bottom: 1px solid rgba(255,255,255,0.03); }
+        .section-title { text-align: center; margin-bottom: 70px; }
+        .section-title h2 { font-size: 2.8rem; font-weight: 800; letter-spacing: -1px; }
+
+        /* Grid Stability */
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 30px; 
+        }
         
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 30px; }
         .card { 
-            background: var(--glass); border: 1px solid rgba(255,255,255,0.05); 
-            padding: 45px; border-radius: 32px; transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative; overflow: hidden;
+            background: var(--glass); 
+            border: 1px solid rgba(255,255,255,0.08); 
+            padding: 45px; border-radius: 32px;
+            transition: 0.4s;
         }
-        .card:hover { 
-            background: rgba(255,255,255,0.05); border-color: var(--primary);
-            transform: translateY(-15px); box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-        }
-        .card-icon { font-size: 3.5rem; color: var(--primary); margin-bottom: 25px; display: block; }
-        .card h3 { font-size: 1.6rem; margin-bottom: 15px; color: #fff; }
-        .card p { color: #94a3b8; font-size: 1rem; margin-bottom: 25px; }
+        .card:hover { border-color: var(--primary); background: rgba(255,255,255,0.08); }
+        .card-icon { font-size: 3.5rem; color: var(--primary); margin-bottom: 25px; }
+        .card h3 { margin-bottom: 15px; font-size: 1.6rem; color: #fff; }
+        .card p { color: var(--text-muted); margin-bottom: 25px; }
         
-        .tech-pill { 
-            background: rgba(59, 130, 246, 0.1); color: var(--primary); 
-            padding: 8px 16px; border-radius: 50px; font-size: 0.75rem; 
-            font-weight: 800; border: 1px solid rgba(59, 130, 246, 0.2);
+        .tag { 
+            padding: 8px 18px; background: rgba(59, 130, 246, 0.1); 
+            color: var(--primary); border-radius: 50px; font-size: 0.7rem; font-weight: 900;
             text-transform: uppercase; letter-spacing: 1px;
         }
 
-        /* Experience Box */
-        .exp-box { background: var(--glass); border: 1px solid rgba(255,255,255,0.05); padding: 50px; border-radius: 40px; margin-top: 40px; }
-        .exp-title { color: var(--primary); font-weight: 800; font-size: 1.1rem; margin-bottom: 10px; display: block; }
-        .exp-list { list-style: none; margin-top: 25px; }
-        .exp-list li { margin-bottom: 15px; color: #94a3b8; padding-left: 30px; position: relative; }
+        /* Experience Boxes */
+        .exp-box { 
+            background: var(--glass); border: 1px solid rgba(255,255,255,0.08); 
+            padding: 45px; border-radius: 32px; margin-bottom: 30px; 
+        }
+        .exp-header { margin-bottom: 20px; }
+        .exp-header h3 { font-size: 1.7rem; margin-bottom: 5px; color: var(--primary); }
+        .exp-date { font-weight: 800; color: var(--accent); font-size: 0.85rem; text-transform: uppercase; }
+        
+        .exp-list { list-style: none; }
+        .exp-list li { margin-bottom: 14px; color: var(--text-muted); padding-left: 28px; position: relative; }
         .exp-list li::before { content: '→'; position: absolute; left: 0; color: var(--primary); font-weight: 900; }
 
         /* Footer */
-        .footer-cta { background: linear-gradient(to bottom, var(--dark), #000); padding: 100px 0; text-align: center; }
-        .social-row { display: flex; justify-content: center; gap: 25px; margin-top: 40px; }
-        .social-item { font-size: 2.2rem; color: #fff; opacity: 0.5; transition: 0.3s; }
-        .social-item:hover { opacity: 1; color: var(--primary); transform: scale(1.2); }
+        footer { padding: 100px 0; text-align: center; background: #04070d; }
+        .social-links { display: flex; justify-content: center; gap: 25px; margin-bottom: 40px; }
+        .social-links a { font-size: 2.5rem; color: white; opacity: 0.4; transition: 0.3s; }
+        .social-links a:hover { opacity: 1; color: var(--primary); transform: translateY(-5px); }
 
+        /* Responsive Fixes */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 3.5rem; }
             .nav-links { display: none; }
+            .hero { padding-top: 140px; min-height: auto; }
+            .hero h1 { font-size: 3.2rem; }
+            .section-title h2 { font-size: 2.2rem; }
             .grid { grid-template-columns: 1fr; }
+            .card, .exp-box { padding: 30px; }
         }
     </style>
 </head>
@@ -117,8 +142,8 @@
             <a href="#" class="logo-fancy">DRV</a>
             <div class="nav-links">
                 <a href="#about">About</a>
-                <a href="#automations">Automations</a>
-                <a href="#history">Experience</a>
+                <a href="#bots">Automations</a>
+                <a href="#experience">History</a>
                 <a href="#contact">Contact</a>
             </div>
         </div>
@@ -127,80 +152,86 @@
     <header class="hero" id="about">
         <div class="container">
             <h1>Expert In <span>Automation</span></h1>
-            <p>I architect 24/7 intelligent systems and automated workflows that run entirely on the cloud.</p>
+            <p>I architect 24/7 intelligent systems and automated cloud workflows designed to eliminate manual tasks.</p>
             <div class="btn-group">
-                <a href="https://wa.me/916352142750" class="btn btn-primary">Hire DRV</a>
+                <a href="https://wa.me/916352142750" class="btn btn-primary">Hire Diwakar</a>
                 <a href="Diwakar_Vishwakarma_Resume.pdf" download class="btn btn-outline">
-                    <ion-icon name="document-outline"></ion-icon> Get Resume
+                    <ion-icon name="cloud-download-outline"></ion-icon> Get Resume
                 </a>
             </div>
         </div>
     </header>
 
-    <section id="automations">
+    <section id="bots">
         <div class="container">
             <div class="section-title">
                 <h2>Active Deployments</h2>
             </div>
             <div class="grid">
                 <div class="card">
-                    <ion-icon name="cart-outline" class="card-icon"></ion-icon>
+                    <ion-icon name="flash-outline" class="card-icon"></ion-icon>
                     <h3>Beast Deals India</h3>
-                    <p>Advanced Python scraping system for Amazon and major retailers. Automates deal discovery, affiliate routing, and real-time delivery.</p>
-                    <span class="tech-pill">Python • Scraping • API</span>
+                    <p>Python-powered affiliate engine for Amazon. Automates deal scraping, price monitoring, and multi-channel posting.</p>
+                    <span class="tag">PYTHON • SCRAPING</span>
                 </div>
 
                 <div class="card">
-                    <ion-icon name="reader-outline" class="card-icon"></ion-icon>
+                    <ion-icon name="newspaper-outline" class="card-icon"></ion-icon>
                     <h3>Jankari Plus</h3>
-                    <p>Comprehensive Blogger automation engine. Manages multi-niche content scheduling, SEO metadata, and search engine indexing.</p>
-                    <span class="tech-pill">Google Cloud • SEO • Automation</span>
+                    <p>Automated Blogger management system. Handles content scheduling, SEO indexing, and niche-specific metadata.</p>
+                    <span class="tag">CLOUD • SEO • API</span>
                 </div>
 
                 <div class="card">
-                    <ion-icon name="school-outline" class="card-icon"></ion-icon>
+                    <ion-icon name="trophy-outline" class="card-icon"></ion-icon>
                     <h3>Toppers Quiz</h3>
-                    <p>Educational Telegram ecosystem featuring automated quiz generation, leaderboard tracking, and PDF answer sheet management.</p>
-                    <span class="tech-pill">Telegram API • Workflow • Node.js</span>
+                    <p>Interactive Telegram ecosystem. Features automated quiz generation, dynamic leaderboards, and PDF reporting.</p>
+                    <span class="tag">NODE.JS • TELEGRAM API</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="history" style="background: rgba(255,255,255,0.01);">
+    <section id="experience" style="background: rgba(255,255,255,0.01);">
         <div class="container">
             <div class="section-title">
-                <h2>Professional Tenure</h2>
+                <h2>Experience</h2>
             </div>
+            
             <div class="exp-box">
-                <span class="exp-title">Office Beacon Pvt. Ltd. | [span_0](start_span)2018 — 2023[span_0](end_span)</span>
-                <h3>Customer Support Specialist</h3>
+                <div class="exp-header">
+                    <p class="exp-date">Feb 2018 — May 2023</p>
+                    <h3>Office Beacon Pvt. Ltd.</h3>
+                    <p style="color: white; font-weight: 700;">Customer Support Specialist</p>
+                </div>
                 <ul class="exp-list">
-                    [span_1](start_span)<li>Led remote e-commerce operations for North American market leaders including <strong>Leprechaun Promotions (USA)</strong> and <strong>Alphabroder (USA/Canada)</strong>[span_1](end_span).</li>
-                    [span_2](start_span)<li>Orchestrated CRM data integrity and cross-border order tracking systems[span_2](end_span).</li>
-                    [span_3](start_span)<li>Optimized chat/email response workflows for high-volume customer interaction environments[span_3](end_span).</li>
+                    <li>Led remote operations for US/Canada clients (Leprechaun Promotions & Alphabroder).</li>
+                    <li>Managed CRM architecture, order logistics, and high-priority resolution via email/chat.</li>
                 </ul>
             </div>
-            <div class="exp-box" style="border-left: 2px solid var(--accent);">
-                <span class="exp-title">Maxicus (formerly Kochar Tech) | [span_4](start_span)2017 — 2018[span_4](end_span)</span>
-                <h3>BPO Technical Executive</h3>
+
+            <div class="exp-box">
+                <div class="exp-header">
+                    <p class="exp-date">2017 — 2018</p>
+                    <h3>Maxicus (formerly Kochar Tech)</h3>
+                    <p style="color: white; font-weight: 700;">BPO Technical Executive</p>
+                </div>
                 <ul class="exp-list">
-                    [span_5](start_span)<li>Provided deep-tier technical support for the <strong>ICICI iMobile</strong> banking application[span_5](end_span).</li>
-                    [span_6](start_span)<li>Maintained high resolution rates for complex customer banking operations and queries[span_6](end_span).</li>
+                    <li>Provided deep-tier technical support for the ICICI iMobile Banking application.</li>
+                    <li>Ensured seamless mobile banking operations for thousands of active users.</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <footer class="footer-cta" id="contact">
+    <footer id="contact">
         <div class="container">
-            <h2>Let's Build The Future</h2>
-            <div class="social-row">
-                <a href="mailto:diwakarvishwakarma9009@gmail.com" class="social-item"><ion-icon name="mail-unread-outline"></ion-icon></a>
-                <a href="https://wa.me/916352142750" class="social-item"><ion-icon name="logo-whatsapp"></ion-icon></a>
-                <a href="https://www.linkedin.com/in/diwakar-vishwakarma-095b31160" target="_blank" class="social-item"><ion-icon name="logo-linkedin"></ion-icon></a>
+            <div class="social-links">
+                <a href="mailto:diwakarvishwakarma9009@gmail.com"><ion-icon name="mail-outline"></ion-icon></a>
+                <a href="https://wa.me/916352142750"><ion-icon name="logo-whatsapp"></ion-icon></a>
+                <a href="https://www.linkedin.com/in/diwakar-vishwakarma-095b31160" target="_blank"><ion-icon name="logo-linkedin"></ion-icon></a>
             </div>
-            <p style="margin-top: 60px; font-size: 0.8rem; opacity: 0.3; letter-spacing: 2px;">DRV CORE AUTOMATION 2026</p>
+            <p style="opacity: 0.3; font-size: 0.8rem; letter-spacing: 3px; font-family: 'Orbitron';">DRV CORE 2026</p>
         </div>
     </footer>
 
