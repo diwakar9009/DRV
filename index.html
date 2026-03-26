@@ -16,26 +16,23 @@
             --text-main: #f1f5f9;
             --text-muted: #94a3b8;
             --nav-height: 85px;
+            --success: #10b981;
         }
 
-        /* Reset & Base */
+        /* Base Reset */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; overflow-x: hidden; }
+        html { scroll-behavior: smooth; }
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
             background-color: var(--dark); 
             color: var(--text-main); 
             line-height: 1.6;
-            width: 100%;
+            overflow-x: hidden;
         }
 
-        .container { 
-            max-width: 1100px; 
-            margin: 0 auto; 
-            padding: 0 24px; 
-        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
-        /* Fixed Navigation */
+        /* Navigation */
         nav {
             position: fixed; top: 0; width: 100%; height: var(--nav-height); z-index: 1000;
             background: rgba(7, 11, 20, 0.95); backdrop-filter: blur(15px);
@@ -43,95 +40,107 @@
             display: flex; align-items: center;
         }
         .nav-content { display: flex; justify-content: space-between; align-items: center; width: 100%; }
-        
         .logo-fancy { 
-            font-family: 'Orbitron', sans-serif; 
-            font-size: 1.8rem; 
-            font-weight: 900; 
-            color: #fff; 
-            text-decoration: none;
-            letter-spacing: 4px;
+            font-family: 'Orbitron', sans-serif; font-size: 1.8rem; font-weight: 900; 
+            color: #fff; text-decoration: none; letter-spacing: 4px;
             text-shadow: 0 0 10px var(--primary);
         }
-
         .nav-links { display: flex; gap: 30px; }
-        .nav-links a { font-weight: 600; font-size: 0.8rem; color: var(--text-muted); text-decoration: none; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
+        .nav-links a { font-weight: 600; font-size: 0.8rem; color: var(--text-muted); text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
         .nav-links a:hover { color: var(--primary); }
 
-        /* Hero Section */
+        /* Hero */
         .hero { 
-            min-height: 90vh;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            min-height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
             text-align: center; padding: calc(var(--nav-height) + 40px) 0 60px;
             background: radial-gradient(circle at center, #111827 0%, #070b14 100%);
         }
         .hero h1 { font-size: clamp(2.8rem, 9vw, 5.5rem); font-weight: 800; line-height: 1; margin-bottom: 24px; letter-spacing: -2px; }
-        .hero h1 span { color: var(--primary); text-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+        .hero h1 span { color: var(--primary); }
         .hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 650px; margin-bottom: 40px; }
 
-        /* Button Styling */
         .btn-group { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
-        .btn { padding: 18px 38px; border-radius: 100px; font-weight: 800; text-decoration: none; display: inline-flex; align-items: center; gap: 12px; transition: 0.3s ease; border: none; font-size: 1rem; }
+        .btn { padding: 18px 38px; border-radius: 100px; font-weight: 800; text-decoration: none; display: inline-flex; align-items: center; gap: 12px; transition: 0.3s; border: none; font-size: 1rem; cursor: pointer; }
         .btn-primary { background: var(--primary); color: white; box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2); }
-        .btn-outline { border: 1.5px solid rgba(255,255,255,0.2); color: white; }
+        .btn-outline { border: 1.5px solid rgba(255,255,255,0.2); color: white; background: transparent; }
         .btn:hover { transform: translateY(-4px); filter: brightness(1.1); }
 
-        /* Section Layouts */
+        /* Status & Cards */
         section { padding: 120px 0; border-bottom: 1px solid rgba(255,255,255,0.03); }
         .section-title { text-align: center; margin-bottom: 70px; }
-        .section-title h2 { font-size: 2.8rem; font-weight: 800; letter-spacing: -1px; }
+        .section-title h2 { font-size: 2.8rem; font-weight: 800; }
 
-        /* Grid Stability */
-        .grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-            gap: 30px; 
-        }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
         
         .card { 
-            background: var(--glass); 
-            border: 1px solid rgba(255,255,255,0.08); 
-            padding: 45px; border-radius: 32px;
-            transition: 0.4s;
+            background: var(--glass); border: 1px solid rgba(255,255,255,0.08); 
+            padding: 40px; border-radius: 32px; transition: 0.4s;
+            display: flex; flex-direction: column; height: 100%;
         }
-        .card:hover { border-color: var(--primary); background: rgba(255,255,255,0.08); }
-        .card-icon { font-size: 3.5rem; color: var(--primary); margin-bottom: 25px; }
-        .card h3 { margin-bottom: 15px; font-size: 1.6rem; color: #fff; }
-        .card p { color: var(--text-muted); margin-bottom: 25px; }
+        .card:hover { border-color: var(--primary); transform: translateY(-5px); }
+
+        .status-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: rgba(16, 185, 129, 0.1); color: var(--success);
+            padding: 4px 10px; border-radius: 20px; font-size: 0.7rem;
+            font-weight: 800; margin-bottom: 20px; border: 1px solid rgba(16, 185, 129, 0.2);
+            width: fit-content;
+        }
+        .pulse-dot {
+            width: 8px; height: 8px; background-color: var(--success); border-radius: 50%;
+            animation: pulse-green 2s infinite;
+        }
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        .card-icon { font-size: 3rem; color: var(--primary); margin-bottom: 20px; }
+        .card h3 { font-size: 1.6rem; margin-bottom: 12px; }
+        .card p { color: var(--text-muted); margin-bottom: 25px; flex-grow: 1; }
         
         .tag { 
-            padding: 8px 18px; background: rgba(59, 130, 246, 0.1); 
+            padding: 6px 14px; background: rgba(59, 130, 246, 0.1); 
             color: var(--primary); border-radius: 50px; font-size: 0.7rem; font-weight: 900;
-            text-transform: uppercase; letter-spacing: 1px;
         }
 
-        /* Experience Boxes */
-        .exp-box { 
-            background: var(--glass); border: 1px solid rgba(255,255,255,0.08); 
-            padding: 45px; border-radius: 32px; margin-bottom: 30px; 
+        .btn-join {
+            margin-top: 20px; width: 100%; padding: 14px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white; text-decoration: none; border-radius: 12px;
+            font-weight: 800; font-size: 0.85rem; display: flex;
+            align-items: center; justify-content: center; gap: 8px; transition: 0.3s;
         }
-        .exp-header { margin-bottom: 20px; }
-        .exp-header h3 { font-size: 1.7rem; margin-bottom: 5px; color: var(--primary); }
-        .exp-date { font-weight: 800; color: var(--accent); font-size: 0.85rem; text-transform: uppercase; }
-        
-        .exp-list { list-style: none; }
-        .exp-list li { margin-bottom: 14px; color: var(--text-muted); padding-left: 28px; position: relative; }
+
+        /* Experience */
+        .exp-box { background: var(--glass); border: 1px solid rgba(255,255,255,0.08); padding: 40px; border-radius: 32px; margin-bottom: 30px; }
+        .exp-header h3 { font-size: 1.7rem; color: var(--primary); }
+        .exp-date { font-weight: 800; color: var(--accent); font-size: 0.85rem; }
+        .exp-list { list-style: none; margin-top: 15px; }
+        .exp-list li { margin-bottom: 10px; color: var(--text-muted); padding-left: 25px; position: relative; }
         .exp-list li::before { content: '→'; position: absolute; left: 0; color: var(--primary); font-weight: 900; }
 
-        /* Footer */
-        footer { padding: 100px 0; text-align: center; background: #04070d; }
-        .social-links { display: flex; justify-content: center; gap: 25px; margin-bottom: 40px; }
-        .social-links a { font-size: 2.5rem; color: white; opacity: 0.4; transition: 0.3s; }
-        .social-links a:hover { opacity: 1; color: var(--primary); transform: translateY(-5px); }
+        /* Footer & Scroll Top */
+        footer { padding: 80px 0; text-align: center; background: #04070d; }
+        .social-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 30px; }
+        .social-links a { font-size: 2.2rem; color: white; opacity: 0.4; transition: 0.3s; }
+        .social-links a:hover { opacity: 1; color: var(--primary); }
 
-        /* Responsive Fixes */
+        #scrollTop {
+            position: fixed; bottom: 30px; right: 30px;
+            width: 50px; height: 50px; background: var(--primary);
+            color: white; border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; font-size: 1.5rem;
+            cursor: pointer; opacity: 0; visibility: hidden; transition: 0.4s; z-index: 2000;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        #scrollTop.active { opacity: 1; visibility: visible; }
+
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .hero { padding-top: 140px; min-height: auto; }
-            .hero h1 { font-size: 3.2rem; }
-            .section-title h2 { font-size: 2.2rem; }
+            .hero h1 { font-size: 3rem; }
             .grid { grid-template-columns: 1fr; }
-            .card, .exp-box { padding: 30px; }
         }
     </style>
 </head>
@@ -152,7 +161,7 @@
     <header class="hero" id="about">
         <div class="container">
             <h1>Expert In <span>Automation</span></h1>
-            <p>I architect 24/7 intelligent systems and automated cloud workflows designed to eliminate manual tasks.</p>
+            <p>I architect 24/7 intelligent systems and automated cloud workflows that solve complex manual problems.</p>
             <div class="btn-group">
                 <a href="https://wa.me/916352142750" class="btn btn-primary">Hire Diwakar</a>
                 <a href="Diwakar_Vishwakarma_Resume.pdf" download class="btn btn-outline">
@@ -164,61 +173,60 @@
 
     <section id="bots">
         <div class="container">
-            <div class="section-title">
-                <h2>Active Deployments</h2>
-            </div>
+            <div class="section-title"><h2>Active Deployments</h2></div>
             <div class="grid">
                 <div class="card">
+                    <div class="status-badge"><span class="pulse-dot"></span> Online</div>
                     <ion-icon name="flash-outline" class="card-icon"></ion-icon>
                     <h3>Beast Deals India</h3>
-                    <p>Python-powered affiliate engine for Amazon. Automates deal scraping, price monitoring, and multi-channel posting.</p>
-                    <span class="tag">PYTHON • SCRAPING</span>
+                    <p>Python-powered affiliate engine for Amazon. Automates deal scraping and real-time posting.</p>
+                    <span class="tag" style="width:fit-content">PYTHON • SCRAPING</span>
+                    <a href="https://t.me/beastdealsindia" target="_blank" class="btn-join">Join Channel <ion-icon name="paper-plane-outline"></ion-icon></a>
                 </div>
 
                 <div class="card">
+                    <div class="status-badge"><span class="pulse-dot"></span> Online</div>
                     <ion-icon name="newspaper-outline" class="card-icon"></ion-icon>
                     <h3>Jankari Plus</h3>
-                    <p>Automated Blogger management system. Handles content scheduling, SEO indexing, and niche-specific metadata.</p>
-                    <span class="tag">CLOUD • SEO • API</span>
+                    <p>Automated Blogger management system for SEO indexing and content scheduling.</p>
+                    <span class="tag" style="width:fit-content">CLOUD • SEO • API</span>
+                    <a href="https://t.me/jankariplus" target="_blank" class="btn-join">Join Channel <ion-icon name="paper-plane-outline"></ion-icon></a>
                 </div>
 
                 <div class="card">
+                    <div class="status-badge"><span class="pulse-dot"></span> Online</div>
                     <ion-icon name="trophy-outline" class="card-icon"></ion-icon>
                     <h3>Toppers Quiz</h3>
-                    <p>Interactive Telegram ecosystem. Features automated quiz generation, dynamic leaderboards, and PDF reporting.</p>
-                    <span class="tag">NODE.JS • TELEGRAM API</span>
+                    <p>Telegram ecosystem for automated quizzes, leaderboards, and PDF reporting.</p>
+                    <span class="tag" style="width:fit-content">NODE.JS • TELEGRAM API</span>
+                    <a href="https://t.me/toppersquiz" target="_blank" class="btn-join">Join Channel <ion-icon name="paper-plane-outline"></ion-icon></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="experience" style="background: rgba(255,255,255,0.01);">
+    <section id="experience">
         <div class="container">
-            <div class="section-title">
-                <h2>Experience</h2>
-            </div>
-            
+            <div class="section-title"><h2>Experience</h2></div>
             <div class="exp-box">
                 <div class="exp-header">
                     <p class="exp-date">Feb 2018 — May 2023</p>
                     <h3>Office Beacon Pvt. Ltd.</h3>
-                    <p style="color: white; font-weight: 700;">Customer Support Specialist</p>
+                    <p style="color:white; font-weight:700">Customer Support Specialist</p>
                 </div>
                 <ul class="exp-list">
-                    <li>Led remote operations for US/Canada clients (Leprechaun Promotions & Alphabroder).</li>
-                    <li>Managed CRM architecture, order logistics, and high-priority resolution via email/chat.</li>
+                    <li>Led remote operations for US/Canada e-commerce clients.</li>
+                    <li>Managed CRM architecture and high-priority resolutions.</li>
                 </ul>
             </div>
-
             <div class="exp-box">
                 <div class="exp-header">
                     <p class="exp-date">2017 — 2018</p>
-                    <h3>Maxicus (formerly Kochar Tech)</h3>
-                    <p style="color: white; font-weight: 700;">BPO Technical Executive</p>
+                    <h3>Maxicus</h3>
+                    <p style="color:white; font-weight:700">Technical Executive</p>
                 </div>
                 <ul class="exp-list">
-                    <li>Provided deep-tier technical support for the ICICI iMobile Banking application.</li>
-                    <li>Ensured seamless mobile banking operations for thousands of active users.</li>
+                    <li>Deep-tier support for ICICI iMobile Banking application.</li>
                 </ul>
             </div>
         </div>
@@ -229,11 +237,24 @@
             <div class="social-links">
                 <a href="mailto:diwakarvishwakarma9009@gmail.com"><ion-icon name="mail-outline"></ion-icon></a>
                 <a href="https://wa.me/916352142750"><ion-icon name="logo-whatsapp"></ion-icon></a>
-                <a href="https://www.linkedin.com/in/diwakar-vishwakarma-095b31160" target="_blank"><ion-icon name="logo-linkedin"></ion-icon></a>
+                <a href="https://www.linkedin.com/in/diwakar-vishwakarma-095b31160"><ion-icon name="logo-linkedin"></ion-icon></a>
             </div>
-            <p style="opacity: 0.3; font-size: 0.8rem; letter-spacing: 3px; font-family: 'Orbitron';">DRV CORE 2026</p>
+            <p style="opacity:0.3; font-size:0.8rem; letter-spacing:3px; font-family:'Orbitron'">DRV CORE 2026</p>
         </div>
     </footer>
+
+    <div id="scrollTop" onclick="window.scrollTo(0,0)"><ion-icon name="arrow-up-outline"></ion-icon></div>
+
+    <script>
+        const scrollBtn = document.getElementById("scrollTop");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+                scrollBtn.classList.add("active");
+            } else {
+                scrollBtn.classList.remove("active");
+            }
+        };
+    </script>
 
 </body>
 </html>
