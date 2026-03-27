@@ -3,241 +3,219 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DRV | Diwakar Vishwakarma | Automation Expert</title>
+    <title>Diwakar Vishwakarma | Automation Architect</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    
+
     <style>
         :root {
             --primary: #3b82f6; 
-            --accent: #06b6d4;
-            --dark: #070b14;
-            --glass: rgba(255, 255, 255, 0.05);
-            --text-main: #f1f5f9;
+            --accent: #60a5fa;
+            --dark: #050810;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.08);
+            --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --nav-height: 85px;
+            --nav-height: 80px;
             --success: #10b981;
         }
 
+        /* [Existing Global Styles] */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--dark); color: var(--text-main); line-height: 1.7; overflow-x: hidden; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 30px; }
+        .bg-glow { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.08) 0%, transparent 70%); z-index: -1; }
+        
         /* Navigation */
         nav {
             position: fixed; top: 0; width: 100%; height: var(--nav-height); z-index: 1000;
-            background: rgba(7, 11, 20, 0.95); backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center;
+            background: rgba(5, 8, 16, 0.8); backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border); display: flex; align-items: center;
         }
         .nav-content { display: flex; justify-content: space-between; align-items: center; width: 100%; }
-        .logo-fancy { font-family: 'Orbitron', sans-serif; font-size: 1.8rem; font-weight: 900; color: #fff; text-decoration: none; letter-spacing: 4px; text-shadow: 0 0 10px var(--primary); }
-        .nav-links { display: flex; gap: 20px; }
-        .nav-links a { font-weight: 600; font-size: 0.75rem; color: var(--text-muted); text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .logo-fancy { font-family: 'Orbitron', sans-serif; font-size: 1.6rem; font-weight: 900; color: #fff; text-decoration: none; letter-spacing: 3px; }
+        .nav-links a { margin-left: 30px; font-weight: 600; font-size: 0.8rem; color: var(--text-muted); text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px; transition: 0.3s; }
         .nav-links a:hover { color: var(--primary); }
 
-        /* Hero */
-        .hero { 
-            min-height: 85vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; padding: calc(var(--nav-height) + 40px) 0 60px;
-            background: radial-gradient(circle at center, #111827 0%, #070b14 100%);
+        /* Sections */
+        section { padding: 100px 0; border-bottom: 1px solid var(--border); }
+        .section-title { margin-bottom: 60px; text-align: center; }
+        .section-title h2 { font-size: 2.8rem; font-weight: 800; }
+        .section-title p { color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 3px; font-size: 0.7rem; }
+
+        /* Telegram Projects Grid */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .card { 
+            background: var(--glass); border: 1px solid var(--border); padding: 40px; border-radius: 30px; 
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden;
         }
-        .hero h1 { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
-        .hero h1 span { color: var(--primary); }
-        .hero p { font-size: 1.1rem; color: var(--text-muted); max-width: 700px; margin-bottom: 40px; }
+        .card:hover { transform: translateY(-12px); border-color: var(--primary); background: rgba(255,255,255,0.06); }
+        .card-icon { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
+        .status-badge { display: inline-flex; align-items: center; gap: 8px; font-size: 0.65rem; font-weight: 800; color: var(--success); text-transform: uppercase; margin-bottom: 15px; }
+        .pulse { width: 8px; height: 8px; background: var(--success); border-radius: 50%; box-shadow: 0 0 10px var(--success); animation: pulse-anim 2s infinite; }
+        @keyframes pulse-anim { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.5); opacity: 0.5; } 100% { transform: scale(1); opacity: 1; } }
 
-        /* Buttons */
-        .btn-group { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
-        .btn { padding: 16px 32px; border-radius: 100px; font-weight: 800; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: 0.3s; border: none; font-size: 0.95rem; cursor: pointer; }
-        .btn-primary { background: var(--primary); color: white; box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2); }
-        .btn-outline { border: 1.5px solid rgba(255,255,255,0.2); color: white; background: transparent; }
-        .btn:hover { transform: translateY(-4px); filter: brightness(1.1); }
+        /* Work History Timeline */
+        .timeline { position: relative; max-width: 800px; margin: 0 auto; padding-left: 40px; }
+        .timeline::before { content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 2px; background: var(--border); }
+        .timeline-item { position: relative; margin-bottom: 60px; }
+        .timeline-item::before { content: ''; position: absolute; left: -45px; top: 8px; width: 12px; height: 12px; background: var(--primary); border-radius: 50%; border: 4px solid var(--dark); box-shadow: 0 0 0 2px var(--primary); }
+        .timeline-date { font-size: 0.8rem; color: var(--primary); font-weight: 800; margin-bottom: 10px; text-transform: uppercase; }
+        .timeline-content h3 { font-size: 1.5rem; margin-bottom: 5px; }
+        .timeline-content h4 { color: var(--text-muted); font-size: 1rem; margin-bottom: 15px; }
+        .timeline-list { list-style: none; color: var(--text-muted); font-size: 0.95rem; }
+        .timeline-list li { margin-bottom: 8px; position: relative; padding-left: 20px; }
+        .timeline-list li::before { content: '▹'; position: absolute; left: 0; color: var(--primary); }
 
-        /* General Section Styling */
-        section { padding: 100px 0; border-bottom: 1px solid rgba(255,255,255,0.03); }
-        .section-title { text-align: center; margin-bottom: 60px; }
-        .section-title h2 { font-size: 2.5rem; font-weight: 800; }
+        /* Professional Resume Box */
+        .resume-window { background: #0a0e1a; border-radius: 24px; border: 1px solid var(--border); overflow: hidden; box-shadow: 0 40px 100px rgba(0,0,0,0.6); }
+        .window-bar { background: rgba(255,255,255,0.05); padding: 15px 25px; display: flex; gap: 8px; align-items: center; border-bottom: 1px solid var(--border); }
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        iframe { width: 100%; height: 750px; border: none; background: white; }
 
-        /* Info Boxes */
-        .info-box { background: var(--glass); border: 1px solid rgba(255,255,255,0.08); padding: 35px; border-radius: 24px; margin-bottom: 25px; }
-        .info-header { margin-bottom: 15px; }
-        .info-header h3 { font-size: 1.5rem; color: var(--primary); margin-bottom: 5px; }
-        .info-sub { font-weight: 800; color: var(--accent); font-size: 0.8rem; text-transform: uppercase; }
-        .info-list { list-style: none; margin-top: 15px; }
-        .info-list li { margin-bottom: 10px; color: var(--text-muted); padding-left: 25px; position: relative; font-size: 0.95rem; }
-        .info-list li::before { content: '→'; position: absolute; left: 0; color: var(--primary); font-weight: 900; }
-
-        /* Skill Pills */
-        .skills-container { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 20px; }
-        .skill-pill { padding: 10px 20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 50px; font-weight: 600; font-size: 0.85rem; color: var(--text-main); transition: 0.3s; }
-        .skill-pill:hover { border-color: var(--primary); background: rgba(59, 130, 246, 0.1); }
-
-        /* Projects Grid */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .card { background: var(--glass); border: 1px solid rgba(255,255,255,0.08); padding: 30px; border-radius: 24px; display: flex; flex-direction: column; height: 100%; transition: 0.3s; }
-        .card:hover { border-color: var(--primary); transform: translateY(-5px); }
-        .status-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(16, 185, 129, 0.1); color: var(--success); padding: 4px 10px; border-radius: 20px; font-size: 0.65rem; font-weight: 800; margin-bottom: 15px; border: 1px solid rgba(16, 185, 129, 0.2); }
-        .pulse-dot { width: 7px; height: 7px; background-color: var(--success); border-radius: 50%; animation: pulse-green 2s infinite; }
-        @keyframes pulse-green { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); } 70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
-        .card-icon { font-size: 2.5rem; color: var(--primary); margin-bottom: 15px; }
-        .btn-join { margin-top: auto; padding: 12px; background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; text-decoration: none; border-radius: 10px; font-weight: 800; font-size: 0.8rem; display: flex; align-items: center; justify-content: center; gap: 8px; }
-
-        /* Footer */
-        footer { padding: 60px 0; text-align: center; background: #04070d; }
-        .social-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 25px; }
-        .social-links a { font-size: 2rem; color: white; opacity: 0.4; transition: 0.3s; }
-        .social-links a:hover { opacity: 1; color: var(--primary); }
+        /* Buttons & Footer */
+        .btn { padding: 16px 32px; border-radius: 12px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: 0.3s; cursor: pointer; border: none; font-size: 0.9rem; }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-join { margin-top: 20px; width: 100%; background: linear-gradient(90deg, var(--primary), var(--accent)); color: white; justify-content: center; }
+        .btn-outline { border: 1px solid var(--border); color: white; background: transparent; }
 
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero h1 { font-size: 2.5rem; }
+            .hero h1 { font-size: 3rem; }
+            .timeline { padding-left: 30px; }
         }
     </style>
 </head>
 <body>
+
+    <div class="bg-glow"></div>
 
     <nav>
         <div class="container nav-content">
             <a href="#" class="logo-fancy">DRV</a>
             <div class="nav-links">
                 <a href="#about">About</a>
-                <a href="#skills">Skills</a>
-                <a href="#bots">Projects</a>
-                <a href="#experience">History</a>
+                <a href="#deployments">Projects</a>
+                <a href="#history">Experience</a>
+                <a href="#resume">Resume</a>
                 <a href="#contact">Contact</a>
             </div>
         </div>
     </nav>
 
-    <header class="hero" id="about">
+    <header class="hero" style="min-height: 90vh; text-align: center;">
         <div class="container">
-            <h1>Expert In <span>Automation</span></h1>
-            <p>High-performance automation architect specializing in Python, Telegram APIs, and Digital Marketing infrastructure.</p>
-            <div class="btn-group">
-                <a href="https://wa.me/916352142750" class="btn btn-primary">Hire Diwakar</a>
-                <a href="Diwakar_Vishwakarma_Resume.pdf" download="Diwakar_Vishwakarma_Resume.pdf" class="btn btn-outline">
-                    <ion-icon name="cloud-download-outline"></ion-icon> Download CV
-                </a>
+            <p style="text-transform: uppercase; letter-spacing: 5px; color: var(--primary); font-weight: 800; font-size: 0.7rem;">Gorakhpur, India</p>
+            <h1 style="font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 1.1; margin: 20px 0;">Automation <span>Architect</span></h1>
+            <p style="max-width: 700px; margin: 0 auto 40px; color: var(--text-muted); font-size: 1.2rem;">Building high-performance Python engines and Telegram-based AI ecosystems.</p>
+            <div style="display: flex; gap: 15px; justify-content: center;">
+                <a href="https://wa.me/916352142750" class="btn btn-primary">Start a Project</a>
+                <button onclick="copyEmail()" class="btn btn-outline"><ion-icon name="copy-outline"></ion-icon> Copy Email</button>
             </div>
         </div>
     </header>
 
-    <section id="skills">
+    <section id="deployments">
         <div class="container">
-            <div class="section-title"><h2>Technical Arsenal</h2></div>
-            <div class="skills-container">
-                <div class="skill-pill">Python Automation</div>
-                <div class="skill-pill">Telegram Bot API</div>
-                <div class="skill-pill">Technical SEO</div>
-                <div class="skill-pill">Meta Ads (FB/IG)</div>
-                <div class="skill-pill">WordPress Development</div>
-                <div class="skill-pill">GitHub Actions</div>
-                <div class="skill-pill">Web Scraping</div>
-                <div class="skill-pill">Visual Effects (ADVFX)</div>
-                <div class="skill-pill">CRM Management</div>
+            <div class="section-title">
+                <p>Live Systems</p>
+                <h2>Active Deployments</h2>
             </div>
-        </div>
-    </section>
-
-    <section id="bots">
-        <div class="container">
-            <div class="section-title"><h2>Active Deployments</h2></div>
             <div class="grid">
                 <div class="card">
-                    <div class="status-badge"><span class="pulse-dot"></span> Online</div>
-                    <ion-icon name="flash-outline" class="card-icon"></ion-icon>
+                    <div class="status-badge"><div class="pulse"></div> Live System</div>
+                    <ion-icon name="cart-outline" class="card-icon"></ion-icon>
                     <h3>Beast Deals India</h3>
-                    <p>Automated affiliate engine managing product flows for Amazon India via Python.</p>
-                    <a href="https://t.me/besst_deals_india" target="_blank" class="btn-join">Join Channel <ion-icon name="paper-plane-outline"></ion-icon></a>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Automated affiliate marketing bot managing Amazon India data flows with custom redirection logic.</p>
+                    <a href="https://t.me/besst_deals_india" target="_blank" class="btn btn-join">Join Channel <ion-icon name="paper-plane-outline"></ion-icon></a>
                 </div>
                 <div class="card">
-                    <div class="status-badge"><span class="pulse-dot"></span> Online</div>
+                    <div class="status-badge"><div class="pulse"></div> Live System</div>
+                    <ion-icon name="book-outline" class="card-icon"></ion-icon>
+                    <h3>Toppers Quiz</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Real-time automated quiz engine featuring dynamic syllabus-based generation and leaderboard PDFs.</p>
+                    <a href="https://t.me/toperszone" target="_blank" class="btn btn-join">Join Channel <ion-icon name="paper-plane-outline"></ion-icon></a>
+                </div>
+                <div class="card">
+                    <div class="status-badge"><div class="pulse"></div> Live System</div>
                     <ion-icon name="newspaper-outline" class="card-icon"></ion-icon>
                     <h3>Jankari Plus</h3>
-                    <p>Cloud automation for content indexing and SEO-optimized blogging.</p>
-                    <a href="https://t.me/jankariplus" target="_blank" class="btn-join">Join Channel <ion-icon name="paper-plane-outline"></ion-icon></a>
-                </div>
-                <div class="card">
-                    <div class="status-badge"><span class="pulse-dot"></span> Online</div>
-                    <ion-icon name="trophy-outline" class="card-icon"></ion-icon>
-                    <h3>Toppers Quiz</h3>
-                    <p>Real-time quiz management with leaderboards and dynamic PDF generation.</p>
-                    <a href="https://t.me/toperszone" target="_blank" class="btn-join">Join Channel <ion-icon name="paper-plane-outline"></ion-icon></a>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Cloud automation bot optimizing content indexing and Blogger SEO management via APIs.</p>
+                    <a href="https://t.me/jankariplus" target="_blank" class="btn btn-join">Join Channel <ion-icon name="paper-plane-outline"></ion-icon></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="experience">
+    <section id="history">
         <div class="container">
-            <div class="section-title"><h2>Professional History</h2></div>
-            
-            <div class="info-box">
-                <div class="info-header">
-                    <p class="info-sub">Feb 2018 — May 2023</p>
-                    <h3>Office Beacon Pvt. Ltd.</h3>
-                    <p style="color:white; font-weight:700">Customer Support Representative</p>
-                </div>
-                <ul class="info-list">
-                    <li>Led remote operations for US/Canada e-commerce giants (Leprechaun & Alphabroder).</li>
-                    <li>Optimized CRM architecture and handled complex tracking and client resolutions.</li>
-                </ul>
+            <div class="section-title">
+                <p>Career Journey</p>
+                <h2>Work Experience</h2>
             </div>
-
-            <div class="info-box">
-                <div class="info-header">
-                    <p class="info-sub">2017 — 2018</p>
-                    <h3>Maxicus (formerly Kochar Tech)</h3>
-                    <p style="color:white; font-weight:700">BPO Technical Executive</p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">Feb 2018 — May 2023</div>
+                    <div class="timeline-content">
+                        <h3>Office Beacon Pvt. Ltd.</h3>
+                        <h4>Customer Support Representative (E-commerce)</h4>
+                        <ul class="timeline-list">
+                            <li>Managed remote operations for major US/Canada clients (Leprechaun & Alphabroder).</li>
+                            <li>Executed complex CRM resolutions and system troubleshooting for global users.</li>
+                        </ul>
+                    </div>
                 </div>
-                <ul class="info-list">
-                    <li>Provided technical support for the <strong>ICICI iMobile Banking</strong> application.</li>
-                </ul>
+                <div class="timeline-item">
+                    <div class="timeline-date">2017 — 2018</div>
+                    <div class="timeline-content">
+                        <h3>Maxicus (formerly Kochar Tech)</h3>
+                        <h4>BPO Technical Executive</h4>
+                        <ul class="timeline-list">
+                            <li>Technical support specialist for the <strong>ICICI iMobile Banking</strong> application.</li>
+                            <li>Delivered high-performance technical troubleshooting for banking end-users.</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="education" style="background: rgba(255,255,255,0.01);">
+    <section id="resume">
         <div class="container">
-            <div class="section-title"><h2>Education & Certifications</h2></div>
-            
-            <div class="info-box">
-                <div class="info-header">
-                    <p class="info-sub">HSC Qualification</p>
-                    <h3>Higher Secondary Certificate</h3>
-                    <p style="color:white; font-weight:700">Result: 86.2%</p>
+            <div class="section-title"><h2>Professional Resume</h2></div>
+            <div class="resume-window">
+                <div class="window-bar">
+                    <div class="dot" style="background: #ff5f56;"></div>
+                    <div class="dot" style="background: #ffbd2e;"></div>
+                    <div class="dot" style="background: #27c93f;"></div>
                 </div>
+                <iframe src="Diwakar_Vishwakarma_Resume.pdf#toolbar=0"></iframe>
             </div>
-
-            <div class="info-box">
-                <div class="info-header">
-                    <p class="info-sub">Specialized Training</p>
-                    <h3>Advance Diploma in Visual Effects (ADVFX)</h3>
-                    <p style="color:white; font-weight:700">Creative Technology Foundation</p>
-                </div>
-            </div>
-
-            <div class="info-box">
-                <div class="info-header">
-                    <p class="info-sub">Professional Certifications</p>
-                    <h3>Digital Marketing & WordPress</h3>
-                    <p style="color:white; font-weight:700">Certified Specialist</p>
-                </div>
-                
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="Diwakar_Vishwakarma_Resume.pdf" download class="btn btn-primary">Download PDF Document</a>
             </div>
         </div>
     </section>
 
-    <footer id="contact">
+    <footer id="contact" style="padding: 100px 0; text-align: center;">
         <div class="container">
-            <div class="social-links">
-                <a href="mailto:diwakarvishwakarma9009@gmail.com"><ion-icon name="mail-outline"></ion-icon></a>
-                <a href="https://wa.me/916352142750"><ion-icon name="logo-whatsapp"></ion-icon></a>
-                <a href="https://www.linkedin.com/in/diwakar-vishwakarma-095b31160"><ion-icon name="logo-linkedin"></ion-icon></a>
+            <h2>Let's Collaborate</h2>
+            <p style="color: var(--text-muted); margin: 15px 0 40px;">Currently accepting automation projects and full-time inquiries.</p>
+            <div style="display: flex; justify-content: center; gap: 30px; font-size: 2.5rem;">
+                <a href="https://wa.me/916352142750" style="color: #fff;"><ion-icon name="logo-whatsapp"></ion-icon></a>
+                <a href="https://www.linkedin.com/in/diwakar-vishwakarma-095b31160" style="color: #fff;"><ion-icon name="logo-linkedin"></ion-icon></a>
+                <a href="mailto:diwakarvishwakarma9009@gmail.com" style="color: #fff;"><ion-icon name="mail-outline"></ion-icon></a>
             </div>
-            <p style="opacity:0.3; font-size:0.8rem; letter-spacing:3px; font-family:'Orbitron'">DIWAKAR VISHWAKARMA • 2026</p>
+            <p style="margin-top: 50px; opacity: 0.2; font-family: 'Orbitron'; font-size: 0.7rem; letter-spacing: 5px;">DIWAKAR VISHWAKARMA • 2026</p>
         </div>
     </footer>
 
+    <script>
+        function copyEmail() {
+            const email = "diwakarvishwakarma9009@gmail.com";
+            navigator.clipboard.writeText(email);
+            alert("Email Copied: " + email);
+        }
+    </script>
 </body>
 </html>
