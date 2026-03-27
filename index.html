@@ -6,12 +6,13 @@
     <title>DRV | Diwakar Vishwakarma</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
 
     <style>
         :root {
-            --primary: #3b82f6; 
+            --primary: #3b82f6; /* Your Signature Blue */
             --accent: #06b6d4;
-            --dark: #030712;
+            --dark: #030712;   /* Your Deep Dark */
             --glass: rgba(255, 255, 255, 0.03);
             --border: rgba(255, 255, 255, 0.08);
             --text-main: #f8fafc;
@@ -23,16 +24,13 @@
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 25px; }
 
-        /* --- 1. ANIMATED BRAND HERO --- */
+        /* --- 1. INTERACTIVE HERO (COLORS UNCHANGED) --- */
         .brand-hero {
             height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
             background: radial-gradient(circle at center, #0a0f1d 0%, #030712 100%);
             position: relative; overflow: hidden;
         }
-
-        /* Canvas Background Animation */
-        #hero-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; opacity: 0.4; }
-
+        #hero-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; opacity: 0.6; }
         .hero-content { position: relative; z-index: 2; text-align: center; }
 
         .drv-logo {
@@ -43,19 +41,12 @@
             line-height: 1; margin-bottom: 25px;
         }
         
-        .brand-sub-container { text-align: center; }
         .brand-sub { 
-            font-family: 'Orbitron'; 
-            letter-spacing: 14px; 
-            font-size: 0.85rem; 
-            color: #fff; 
-            text-transform: uppercase; 
-            display: block;
-            margin-bottom: 10px;
-            opacity: 0.7;
+            font-family: 'Orbitron'; letter-spacing: 14px; font-size: 0.85rem; color: #fff; 
+            text-transform: uppercase; display: block; margin-bottom: 10px; opacity: 0.7; 
         }
 
-        /* Navigation */
+        /* Nav */
         nav {
             position: fixed; top: 0; width: 100%; height: 75px; z-index: 1000;
             background: rgba(3, 7, 18, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);
@@ -63,37 +54,35 @@
         }
         .nav-links { margin-left: auto; display: flex; gap: 20px; }
         .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; }
-        .nav-links a:hover { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
+        .nav-links a.active { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
 
-        /* --- 2. SECTIONS --- */
+        /* --- 2. INTERACTIVE TILT CARDS --- */
         section { padding: 120px 0; border-bottom: 1px solid var(--border); }
-        .section-title { font-size: 2.8rem; font-weight: 800; text-align: center; margin-bottom: 60px; letter-spacing: -1px; }
+        .section-title { font-size: 2.8rem; font-weight: 800; text-align: center; margin-bottom: 60px; }
 
-        .about-card { background: var(--glass); padding: 50px; border-radius: 40px; border: 1px solid var(--border); max-width: 900px; margin: 0 auto; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
-        .about-card h3 { color: var(--primary); font-size: 2rem; margin-bottom: 20px; }
-
-        /* Projects */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .card { background: var(--glass); border: 1px solid var(--border); padding: 40px; border-radius: 30px; transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1); }
-        .card:hover { transform: translateY(-15px); border-color: var(--primary); box-shadow: 0 15px 40px rgba(59, 130, 246, 0.1); }
         
-        /* Timeline */
+        /* The Card keeps the same dark-glass look but now Tilts */
+        .interactive-card { 
+            background: var(--glass); border: 1px solid var(--border); padding: 40px; border-radius: 30px; 
+            transition: border-color 0.3s; transform-style: preserve-3d;
+        }
+        .interactive-card:hover { border-color: var(--primary); }
+        .card-inner { transform: translateZ(30px); }
+
+        /* --- 3. TIMELINE & CREDENTIALS --- */
         .timeline { max-width: 800px; margin: 0 auto; border-left: 2px solid var(--border); padding-left: 45px; }
         .exp-item { margin-bottom: 50px; position: relative; }
         .exp-item::before { content: ''; position: absolute; left: -52px; top: 10px; width: 12px; height: 12px; background: var(--primary); border-radius: 50%; box-shadow: 0 0 15px var(--primary); }
 
-        /* Credentials */
-        .edu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 25px; }
-        .edu-card { background: rgba(255,255,255,0.02); padding: 30px; border-radius: 25px; border: 1px solid var(--border); text-align: center; transition: 0.3s; }
-        .edu-card:hover { background: var(--glass); border-color: var(--accent); }
-
         /* Footer */
         footer { padding: 100px 0; text-align: center; background: #010409; }
-        .btn-main { padding: 14px 35px; border-radius: 14px; background: var(--primary); color: #fff; text-decoration: none; font-weight: 800; display: inline-block; margin-top: 20px; transition: 0.3s; }
-        .btn-main:hover { transform: scale(1.05); filter: brightness(1.1); }
-        .copy-pill { background: var(--glass); padding: 15px 30px; border-radius: 50px; border: 1px dashed var(--primary); cursor: pointer; display: inline-flex; align-items: center; gap: 15px; margin-top: 25px; font-weight: 600; }
+        .btn-main { padding: 14px 35px; border-radius: 14px; background: var(--primary); color: #fff; text-decoration: none; font-weight: 800; display: inline-block; margin-top: 20px; transition: 0.3s; border: none; cursor: pointer; }
+        .copy-pill { background: var(--glass); padding: 15px 30px; border-radius: 50px; border: 1px dashed var(--primary); cursor: pointer; display: inline-flex; align-items: center; gap: 15px; margin-top: 25px; }
 
-        @media (max-width: 768px) { .nav-links { display: none; } .drv-logo { font-size: 5rem; letter-spacing: 8px; } .brand-sub { letter-spacing: 8px; font-size: 0.7rem; } }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-15px);} 60% {transform: translateY(-7px);} }
+        
+        @media (max-width: 768px) { .nav-links { display: none; } .drv-logo { font-size: 5rem; letter-spacing: 8px; } }
     </style>
 </head>
 <body>
@@ -102,11 +91,11 @@
         <div class="container" style="display:flex; width:100%; align-items:center;">
             <a href="#" style="font-family:'Orbitron'; color:#fff; text-decoration:none; font-weight:900; font-size: 1.2rem;">DRV</a>
             <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#projects">Projects</a>
-                <a href="#experience">History</a>
-                <a href="#education">Credentials</a>
-                <a href="#contact">Contact</a>
+                <a href="#about" class="nav-item">About</a>
+                <a href="#projects" class="nav-item">Projects</a>
+                <a href="#experience" class="nav-item">History</a>
+                <a href="#education" class="nav-item">Certs</a>
+                <a href="#contact" class="nav-item">Contact</a>
             </div>
         </div>
     </nav>
@@ -128,32 +117,40 @@
 
     <section id="about">
         <div class="container">
-            <div class="about-card">
-                <ion-icon name="pulse-outline" style="font-size: 5rem; color: var(--primary); margin-bottom: 25px;"></ion-icon>
-                <h3>Diwakar Vishwakarma</h3>
-                <p>Based in Gorakhpur, I specialize in engineering high-performance automation systems and creative visual solutions. My work bridges the gap between complex backend logic and seamless frontend design.</p>
+            <div class="interactive-card" data-tilt data-tilt-max="5" style="max-width: 850px; margin: 0 auto; text-align: center;">
+                <div class="card-inner">
+                    <ion-icon name="shield-checkmark-outline" style="font-size: 4.5rem; color: var(--primary); margin-bottom: 25px;"></ion-icon>
+                    <h3 style="font-size: 2.2rem; margin-bottom: 15px;">Diwakar Vishwakarma</h3>
+                    <p style="color: var(--text-muted); font-size: 1.1rem;">Engineering high-performance automation and digital experiences in Gorakhpur. I specialize in Python-based systems that bridge complex data with intuitive visual design.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="projects">
         <div class="container">
-            <h2 class="section-title">Live Deployments</h2>
+            <h2 class="section-title">Active Deployments</h2>
             <div class="grid">
-                <div class="card">
-                    <h4 style="color:var(--primary); font-size: 1.3rem; margin-bottom: 15px;">Beast Deals India</h4>
-                    <p style="color: var(--text-muted); margin-bottom: 20px;">Python-powered Telegram engine with automated deal scraping and link redirection for Amazon India.</p>
-                    <a href="https://t.me/besst_deals_india" class="btn-main" style="width:100%; text-align:center;">Launch Bot</a>
+                <div class="interactive-card" data-tilt>
+                    <div class="card-inner">
+                        <h4 style="color:var(--primary); font-size: 1.3rem; margin-bottom: 15px;">Beast Deals India</h4>
+                        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 25px;">Advanced affiliate bot with automated redirection and cloud-scraping logic.</p>
+                        <a href="https://t.me/besst_deals_india" class="btn-main" style="width:100%; text-align:center;">Launch Bot</a>
+                    </div>
                 </div>
-                <div class="card">
-                    <h4 style="color:var(--primary); font-size: 1.3rem; margin-bottom: 15px;">Toppers Quiz</h4>
-                    <p style="color: var(--text-muted); margin-bottom: 20px;">AI-driven educational bot generating dynamic syllabus quizzes and real-time PDF leaderboards.</p>
-                    <a href="https://t.me/toperszone" class="btn-main" style="width:100%; text-align:center;">View Channel</a>
+                <div class="interactive-card" data-tilt>
+                    <div class="card-inner">
+                        <h4 style="color:var(--primary); font-size: 1.3rem; margin-bottom: 15px;">Toppers Quiz</h4>
+                        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 25px;">Syllabus-based automated quiz engine with PDF result generation.</p>
+                        <a href="https://t.me/toperszone" class="btn-main" style="width:100%; text-align:center;">View System</a>
+                    </div>
                 </div>
-                <div class="card">
-                    <h4 style="color:var(--primary); font-size: 1.3rem; margin-bottom: 15px;">Jankari Plus</h4>
-                    <p style="color: var(--text-muted); margin-bottom: 20px;">Cloud-based SEO automation tool leveraging Google APIs for rapid content indexing and monitoring.</p>
-                    <a href="https://t.me/jankariplus" class="btn-main" style="width:100%; text-align:center;">Enter Portal</a>
+                <div class="interactive-card" data-tilt>
+                    <div class="card-inner">
+                        <h4 style="color:var(--primary); font-size: 1.3rem; margin-bottom: 15px;">Jankari Plus</h4>
+                        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 25px;">Cloud SEO automation utilizing Google Search Console API for tracking.</p>
+                        <a href="https://t.me/jankariplus" class="btn-main" style="width:100%; text-align:center;">Enter Portal</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -164,38 +161,14 @@
             <h2 class="section-title">Work History</h2>
             <div class="timeline">
                 <div class="exp-item">
-                    <p style="color: var(--primary); font-weight: 800; font-size: 0.9rem; margin-bottom: 5px;">2018 — 2023</p>
+                    <p style="color: var(--primary); font-weight: 800; font-size: 0.9rem;">2018 — 2023</p>
                     <h4 style="font-size: 1.4rem;">Office Beacon Pvt. Ltd.</h4>
-                    <p style="color: var(--text-muted);">Customer Support Operations Specialist for major international e-commerce platforms (US/Canada markets).</p>
+                    <p style="color: var(--text-muted);">Operations Specialist for North American e-commerce troubleshooting.</p>
                 </div>
                 <div class="exp-item">
-                    <p style="color: var(--primary); font-weight: 800; font-size: 0.9rem; margin-bottom: 5px;">2017 — 2018</p>
+                    <p style="color: var(--primary); font-weight: 800; font-size: 0.9rem;">2017 — 2018</p>
                     <h4 style="font-size: 1.4rem;">Maxicus (Kochar Tech)</h4>
-                    <p style="color: var(--text-muted);">Technical Support Executive for ICICI iMobile Banking application infrastructure.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="education">
-        <div class="container">
-            <h2 class="section-title">Certifications</h2>
-            <div class="edu-grid">
-                <div class="edu-card">
-                    <p style="font-weight:900; color:var(--primary); margin-bottom: 10px;">HSC</p>
-                    <p>Score: 86.2%</p>
-                </div>
-                <div class="edu-card">
-                    <p style="font-weight:900; color:var(--primary); margin-bottom: 10px;">ADVFX</p>
-                    <p>Visual Effects Diploma</p>
-                </div>
-                <div class="edu-card">
-                    <p style="font-weight:900; color:var(--primary); margin-bottom: 10px;">Meta Ads</p>
-                    <p>Infosys Certified</p>
-                </div>
-                <div class="edu-card">
-                    <p style="font-weight:900; color:var(--primary); margin-bottom: 10px;">ADCA</p>
-                    <p>Computer Applications</p>
+                    <p style="color: var(--text-muted);">Technical infrastructure support for banking application environments.</p>
                 </div>
             </div>
         </div>
@@ -203,12 +176,12 @@
 
     <footer id="contact">
         <div class="container">
-            <h2 style="font-size: 2.5rem; margin-bottom: 15px;">Connect With The Brand</h2>
+            <h2 style="font-size: 2.2rem; margin-bottom: 15px;">Direct Inquiry</h2>
             <div class="copy-pill" onclick="copyEmail()">
                 <span id="email">diwakarvishwakarma9009@gmail.com</span>
-                <ion-icon name="copy-outline"></ion-icon>
+                <ion-icon name="copy-outline" style="color: var(--primary);"></ion-icon>
             </div>
-            <div style="margin-top: 40px; display: flex; justify-content: center; gap: 30px; font-size: 2.5rem;">
+            <div style="margin-top: 40px; display: flex; justify-content: center; gap: 35px; font-size: 2.5rem;">
                 <a href="https://wa.me/916352142750" style="color: #fff;"><ion-icon name="logo-whatsapp"></ion-icon></a>
                 <a href="https://www.linkedin.com/in/diwakar-vishwakarma-095b31160" style="color: #fff;"><ion-icon name="logo-linkedin"></ion-icon></a>
             </div>
@@ -217,63 +190,81 @@
     </footer>
 
     <script>
-        // Particle Background Logic
+        // Interactive Physics Particle Background
         const canvas = document.getElementById('hero-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
+        const mouse = { x: null, y: null, radius: 100 };
 
-        function initCanvas() {
+        window.addEventListener('mousemove', (e) => { mouse.x = e.x; mouse.y = e.y; });
+
+        function init() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-        }
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2;
-                this.speedX = Math.random() * 0.5 - 0.25;
-                this.speedY = Math.random() * 0.5 - 0.25;
-            }
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                if (this.x > canvas.width) this.x = 0;
-                if (this.x < 0) this.x = canvas.width;
-                if (this.y > canvas.height) this.y = 0;
-                if (this.y < 0) this.y = canvas.height;
-            }
-            draw() {
-                ctx.fillStyle = '#3b82f6';
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        function createParticles() {
-            for (let i = 0; i < 100; i++) {
-                particles.push(new Particle());
+            particles = [];
+            for (let i = 0; i < 120; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    baseX: Math.random() * canvas.width,
+                    baseY: Math.random() * canvas.height,
+                    size: Math.random() * 2,
+                    speed: Math.random() * 0.5 + 0.1
+                });
             }
         }
 
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             particles.forEach(p => {
-                p.update();
-                p.draw();
+                // Movement
+                p.y -= p.speed;
+                if (p.y < 0) p.y = canvas.height;
+
+                // Mouse Interaction
+                let dx = mouse.x - p.x;
+                let dy = mouse.y - p.y;
+                let distance = Math.sqrt(dx * dx + dy * dy);
+                if (distance < mouse.radius) {
+                    p.x += dx / 10;
+                    p.y += dy / 10;
+                }
+
+                ctx.fillStyle = '#3b82f6';
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
             });
             requestAnimationFrame(animate);
         }
 
-        window.addEventListener('resize', initCanvas);
-        initCanvas();
-        createParticles();
-        animate();
+        window.addEventListener('resize', init);
+        init(); animate();
+
+        // 3D Tilt Initialization
+        VanillaTilt.init(document.querySelectorAll(".interactive-card"), {
+            max: 8,
+            speed: 500,
+            glare: true,
+            "max-glare": 0.15,
+        });
+
+        // Scroll Spy Active Links
+        const navLinks = document.querySelectorAll('.nav-item');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            document.querySelectorAll('section').forEach(s => {
+                if (pageYOffset >= s.offsetTop - 100) current = s.getAttribute('id');
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) link.classList.add('active');
+            });
+        });
 
         function copyEmail() {
             navigator.clipboard.writeText("diwakarvishwakarma9009@gmail.com");
-            alert("Digital Business Email Copied!");
+            alert("Email Copied!");
         }
     </script>
 </body>
