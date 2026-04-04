@@ -42,7 +42,6 @@
         }
         .brand-sub { font-family: 'Orbitron'; letter-spacing: 10px; font-size: 0.8rem; color: #fff; text-transform: uppercase; display: block; margin-bottom: 8px; opacity: 0.7; }
 
-        /* Navigation */
         nav {
             position: fixed; top: 0; width: 100%; height: 75px; z-index: 1000;
             background: rgba(3, 7, 18, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);
@@ -52,61 +51,28 @@
         .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; }
         .nav-links a:hover { color: var(--primary); }
 
-        /* Sections General */
         section { padding: 80px 0; border-bottom: 1px solid var(--border); }
         .section-title { font-size: 2rem; font-weight: 800; text-align: center; margin-bottom: 50px; font-family: 'Orbitron'; letter-spacing: 2px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        
         .interactive-card { background: var(--glass); border: 1px solid var(--border); padding: 40px; border-radius: 30px; transform-style: preserve-3d; transition: 0.3s; height: 100%; display: flex; flex-direction: column; }
         .interactive-card:hover { border-color: var(--primary); }
 
-        /* Project UI */
         .project-img { width: 100%; height: 160px; object-fit: cover; border-radius: 15px; margin-bottom: 20px; border: 1px solid var(--border); opacity: 0.8; transition: 0.3s; }
-        .interactive-card:hover .project-img { opacity: 1; border-color: var(--primary); }
         .project-desc { flex-grow: 1; color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px; }
 
-        /* Skill Tags */
-        .skill-tag {
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid var(--border);
-            color: var(--text-main);
-            padding: 6px 14px;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            transition: 0.3s;
-            cursor: default;
-        }
-        .skill-tag:hover {
-            background: var(--primary);
-            border-color: var(--primary);
-            box-shadow: 0 0 15px var(--primary);
-            transform: translateY(-2px);
-        }
-
-        /* Timeline */
-        .timeline { max-width: 800px; margin: 0 auto; border-left: 2px solid var(--border); padding-left: 40px; }
-        .exp-item { margin-bottom: 50px; position: relative; }
-        .exp-item::before { content: ''; position: absolute; left: -47px; top: 8px; width: 12px; height: 12px; background: var(--primary); border-radius: 50%; box-shadow: 0 0 15px var(--primary); }
-        .exp-date { color: var(--primary); font-weight: 800; font-size: 0.85rem; }
-
-        /* Gallery */
+        .skill-tag { background: rgba(59, 130, 246, 0.1); border: 1px solid var(--border); color: var(--text-main); padding: 6px 14px; border-radius: 50px; font-size: 0.75rem; font-weight: 600; transition: 0.3s; }
+        
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
         .cert-card { background: var(--glass); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; transition: 0.3s; text-align: center; }
-        .cert-card:hover { border-color: var(--primary); transform: translateY(-5px); }
-        .cert-img { width: 100%; height: 150px; object-fit: cover; border-bottom: 1px solid var(--border); opacity: 0.7; transition: 0.3s; }
-        .cert-card:hover .cert-img { opacity: 1; }
+        .cert-img-container { width: 100%; height: 150px; background: rgba(255,255,255,0.05); overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .cert-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: 0.3s; }
         .cert-info { padding: 15px; }
+        .cert-title { font-size: 0.8rem; display: block; margin-bottom: 10px; font-weight: 700; min-height: 40px; }
         .cert-link { color: var(--primary); text-decoration: none; font-weight: 800; font-size: 0.7rem; text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 5px; }
 
-        /* Footer & Buttons */
         footer { padding: 80px 0; text-align: center; background: #010409; }
         .btn-main { padding: 12px 28px; border-radius: 10px; background: var(--primary); color: #fff; text-decoration: none; font-weight: 800; display: inline-block; transition: 0.3s; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; font-size: 0.75rem; width: 100%; text-align: center; }
-        .btn-main:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3); }
-
-        .btn-blog { background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%); border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 0 15px var(--accent-glow); }
-        .btn-blog:hover { box-shadow: 0 0 25px var(--primary); }
-
-        .btn-download { background: transparent; border: 2px solid var(--primary); color: var(--primary); margin-bottom: 40px; width: auto; }
         .copy-pill { background: var(--glass); padding: 12px 25px; border-radius: 50px; border: 1px dashed var(--primary); cursor: pointer; display: inline-flex; align-items: center; gap: 12px; color: var(--text-main); }
 
         @media (max-width: 768px) { .nav-links { display: none; } }
@@ -118,10 +84,9 @@
         <div class="container" style="display:flex; width:100%; align-items:center;">
             <a href="#" style="font-family:'Orbitron'; color:#fff; text-decoration:none; font-weight:900; font-size: 1.1rem;">DRV</a>
             <div class="nav-links">
-                <a href="#about">About</a>
                 <a href="#projects">Projects</a>
+                <a href="#internship">Internship</a>
                 <a href="#skills">Skills</a>
-                <a href="#experience">History</a>
                 <a href="#credentials">Certs</a>
             </div>
         </div>
@@ -131,190 +96,126 @@
         <canvas id="hero-canvas"></canvas>
         <div class="hero-content">
             <h1 class="drv-logo">DRV</h1>
-            <span class="brand-sub">Automation</span>
-            <span class="brand-sub">Intelligence</span>
-            <span class="brand-sub">Design</span>
+            <span class="brand-sub">Automation Intelligence Design</span>
         </div>
     </header>
-
-    <section id="about">
-        <div class="container">
-            <h2 class="section-title">Professional Summary</h2>
-            <div class="interactive-card" data-tilt data-tilt-max="2" style="max-width: 850px; margin: 0 auto; text-align: center;">
-                <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">
-                    Dynamic professional with over 6 years of experience in International Operations and Technical Automation. 
-                    I specialize in building Agentic AI workflows and Python-based bots that eliminate manual tasks. 
-                    Successfully transitioned from traditional customer support to developing full-scale automated digital ecosystems.
-                </p>
-            </div>
-        </div>
-    </section>
 
     <section id="projects">
         <div class="container">
             <h2 class="section-title">Digital Ecosystems</h2>
             <div class="grid">
                 <div class="interactive-card" data-tilt>
-                    <img src="tool_nova_thumb.jpg" class="project-img" alt="ToolNova" onerror="this.style.opacity='0.3'">
                     <ion-icon name="construct-outline" style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;"></ion-icon>
-                    <h3 style="margin-bottom: 10px;">ToolNova</h3>
-                    <p class="project-desc">A comprehensive suite of digital utility tools designed for rapid content processing and web efficiency.</p>
-                    <a href="https://tool-nova-pi.vercel.app/" target="_blank" class="btn-main" style="background: linear-gradient(135deg, #6366f1 0%, #3b82f6 100%);">Explore Tools</a>
+                    <h3>ToolNova</h3>
+                    <p class="project-desc">A comprehensive suite of digital utility tools designed for rapid content processing.</p>
+                    <a href="https://tool-nova-pi.vercel.app/" target="_blank" class="btn-main">Explore Tools</a>
                 </div>
-
                 <div class="interactive-card" data-tilt>
-                    <img src="beast_deals_thumb.jpg" class="project-img" alt="Beast Deals India">
                     <ion-icon name="logo-amazon" style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;"></ion-icon>
-                    <h3 style="margin-bottom: 10px;">Beast Deals India</h3>
-                    <p class="project-desc">Automated affiliate marketing engine scraping Amazon deals directly to Telegram channels.</p>
+                    <h3>Beast Deals India</h3>
+                    <p class="project-desc">Automated affiliate marketing engine scraping Amazon deals directly to Telegram.</p>
                     <a href="https://t.me/besst_deals_india" target="_blank" class="btn-main">Launch Channel</a>
                 </div>
-
                 <div class="interactive-card" data-tilt>
-                    <img src="quiz_bot_thumb.jpg" class="project-img" alt="Toppers Quiz Bot">
-                    <ion-icon name="help-circle-outline" style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;"></ion-icon>
-                    <h3 style="margin-bottom: 10px;">Toppers Quiz Bot</h3>
-                    <p class="project-desc">Curriculum-based automation for quiz delivery and automated result analysis for students.</p>
-                    <a href="https://t.me/toperszone" target="_blank" class="btn-main">Launch Bot</a>
-                </div>
-
-                <div class="interactive-card" data-tilt>
-                    <img src="jankari_plus_thumb.jpg" class="project-img" alt="Jankari Plus">
                     <ion-icon name="newspaper-outline" style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;"></ion-icon>
-                    <h3 style="margin-bottom: 10px;">Jankari Plus</h3>
-                    <p class="project-desc">Digital information hub providing news updates and curated knowledge content via automated blogging.</p>
-                    <a href="https://duniyabharkagyaan.blogspot.com" target="_blank" class="btn-main btn-blog">
-                        <ion-icon name="earth-outline" style="vertical-align: middle; margin-right: 5px;"></ion-icon>
-                        Visit Live Blog
-                    </a>
+                    <h3>Jankari Plus</h3>
+                    <p class="project-desc">Automated Hindi news and factual content hub for Blogger and Social Media.</p>
+                    <a href="https://duniyabharkagyaan.blogspot.com" target="_blank" class="btn-main">Visit Blog</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="skills">
+    <section id="internship" style="background: rgba(59, 130, 246, 0.02);">
         <div class="container">
-            <h2 class="section-title">Core Proficiencies</h2>
-            <div class="skills-grid">
-                <div class="interactive-card" data-tilt>
-                    <h4 style="color:var(--primary); margin-bottom: 20px; font-family: 'Orbitron'; font-size: 0.8rem; letter-spacing: 2px;">TECHNICAL & AUTOMATION</h4>
-                    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">Next.js/React</span>
-                        <span class="skill-tag">GitHub Actions</span>
-                        <span class="skill-tag">Telegram Bot API</span>
-                        <span class="skill-tag">Web Scraping</span>
-                        <span class="skill-tag">Agentic AI</span>
-                        <span class="skill-tag">SEO</span>
-                        <span class="skill-tag">Prompt Engineering</span>
+            <h2 class="section-title">Internship Spotlight</h2>
+            <div class="interactive-card" data-tilt style="max-width: 950px; margin: 0 auto; border-left: 5px solid var(--primary);">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px; margin-bottom: 30px;">
+                    <div>
+                        <h3 style="font-size: 1.8rem; color: var(--primary);">Digital Marketing Intern</h3>
+                        <p style="font-weight: 700; letter-spacing: 1px; opacity: 0.9; display: flex; align-items: center; gap: 10px;">
+                            <ion-icon name="business-outline"></ion-icon> iStudio (Internship Studio)
+                            [span_0](start_span)<span style="font-size: 0.65rem; background: #fff; color: #000; padding: 2px 8px; border-radius: 4px; font-weight: 900;">ISO 9001:2015</span>[span_0](end_span)
+                        </p>
+                    </div>
+                    <div style="text-align: right;">
+                        [span_1](start_span)<span class="skill-tag" style="background: var(--primary); color: #fff;">14 Feb — 21 March 2025</span>[span_1](end_span)
                     </div>
                 </div>
 
-                <div class="interactive-card" data-tilt>
-                    <h4 style="color:var(--primary); margin-bottom: 20px; font-family: 'Orbitron'; font-size: 0.8rem; letter-spacing: 2px;">OPERATIONS & STRATEGY</h4>
-                    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-                        <span class="skill-tag">Back-Office Ops</span>
-                        <span class="skill-tag">Customer Support</span>
-                        <span class="skill-tag">CRM Management</span>
-                        <span class="skill-tag">Ayushman Bharat Portal</span>
-                        <span class="skill-tag">Digital Marketing</span>
-                        <span class="skill-tag">Affiliate Marketing</span>
-                        <span class="skill-tag">Data Accuracy</span>
-                        <span class="skill-tag">Project Coordination</span>
+                <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+                    <div>
+                        <h4 style="margin-bottom: 15px; font-family: 'Orbitron'; font-size: 0.8rem; color: var(--primary);">QUALITY STANDARDS</h4>
+                        <ul style="list-style: none; color: var(--text-muted); font-size: 0.9rem;">
+                            [span_2](start_span)<li style="margin-bottom: 12px;"><ion-icon name="ribbon-outline" style="color: var(--primary); margin-right: 8px;"></ion-icon> ISO 9001:2015 Verified Training[span_2](end_span)</li>
+                            [span_3](start_span)<li style="margin-bottom: 12px;"><ion-icon name="shield-checkmark-outline" style="color: var(--primary); margin-right: 8px;"></ion-icon> Industry Certified Syllabus[span_3](end_span)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 15px; font-family: 'Orbitron'; font-size: 0.8rem; color: var(--primary);">VERIFIED DOCUMENTS</h4>
+                        <div style="display: flex; flex-direction: column; gap: 12px;">
+                            <a href="Internship_Certificate.pdf" target="_blank" class="btn-main" style="background: rgba(59, 130, 246, 0.1); border: 1px solid var(--border); text-transform: none; font-size: 0.7rem;">
+                                [span_4](start_span)<ion-icon name="document-attach-outline"></ion-icon> Internship Certificate[span_4](end_span)
+                            </a>
+                            <a href="Training_Certificate.pdf" target="_blank" class="btn-main" style="background: rgba(59, 130, 246, 0.1); border: 1px solid var(--border); text-transform: none; font-size: 0.7rem;">
+                                [span_5](start_span)<ion-icon name="school-outline"></ion-icon> Training Certificate[span_5](end_span)
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="experience">
-        <div class="container">
-            <h2 class="section-title">Professional Journey</h2>
-            <div class="timeline">
-                <div class="exp-item">
-                    <span class="exp-date">Feb 2025 — March 2025</span>
-                    <h3>Digital Marketing Intern</h3>
-                    <p style="color: var(--primary); font-weight: 600;">Full-Stack Marketing & SEO</p>
+    <div class="container" style="margin-top: -40px; margin-bottom: 40px;">
+        <div class="interactive-card" data-tilt style="background: linear-gradient(145deg, rgba(59, 130, 246, 0.05) 0%, rgba(3, 7, 18, 0.5) 100%);">
+            <div style="text-align: center; margin-bottom: 30px;">
+                [span_6](start_span)<h4 style="font-family: 'Orbitron'; font-size: 0.9rem; color: var(--primary); letter-spacing: 2px;">SKILLS ACQUIRED[span_6](end_span)</h4>
+            </div>
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                <div style="padding: 15px; border-radius: 15px; background: rgba(255,255,255,0.02); border: 1px solid var(--border);">
+                    <ion-icon name="search-outline" style="font-size: 1.5rem; color: var(--primary); margin-bottom: 10px;"></ion-icon>
+                    <h5 style="font-size: 0.9rem;">SEO Strategy</h5>
+                    [span_7](start_span)<p style="font-size: 0.75rem; color: var(--text-muted);">Mastered keyword research and ranking techniques.[span_7](end_span)</p>
                 </div>
-                <div class="exp-item">
-                    <span class="exp-date">2018 — 2023</span>
-                    <h3>Operations Specialist</h3>
-                    <p style="color: var(--primary); font-weight: 600;">Office Beacon Pvt. Ltd.</p>
-                </div>
-                <div class="exp-item">
-                    <span class="exp-date">2017 — 2018</span>
-                    <h3>Technical Support Executive</h3>
-                    <p style="color: var(--primary); font-weight: 600;">Maxicus (Kochar Tech)</p>
+                <div style="padding: 15px; border-radius: 15px; background: rgba(255,255,255,0.02); border: 1px solid var(--border);">
+                    <ion-icon name="megaphone-outline" style="font-size: 1.5rem; color: var(--primary); margin-bottom: 10px;"></ion-icon>
+                    <h5 style="font-size: 0.9rem;">Digital Ads</h5>
+                    [span_8](start_span)<p style="font-size: 0.75rem; color: var(--text-muted);">Audience targeting and campaign performance.[span_8](end_span)</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-        <section id="credentials">
+    <section id="credentials">
         <div class="container">
-            <h2 class="section-title">Verified Gallery</h2>
+            <h2 class="section-title">Other Credentials</h2>
             <div class="gallery-grid">
                 <div class="cert-card">
-                    <img src="infosys_thumb.jpg" class="cert-img" alt="Infosys Springboard" onerror="this.style.display='none'">
+                    <div class="cert-img-container"><img src="infosys_thumb.jpg" class="cert-img" onerror="this.src='https://via.placeholder.com/400x200/030712/3b82f6?text=Infosys'"></div>
                     <div class="cert-info">
-                        <span style="font-size: 0.8rem; display:block; margin-bottom: 10px; font-weight: 700;">Infosys: Digital Marketing</span>
-                        <a href="Certificate of Digital Marketing Training.pdf" target="_blank" class="cert-link">Verify PDF <ion-icon name="document-text-outline"></ion-icon></a>
+                        <span class="cert-title">Infosys Springboard</span>
+                        <a href="Certificate of Digital Marketing Training.pdf" target="_blank" class="cert-link">Verify PDF</a>
                     </div>
                 </div>
-
                 <div class="cert-card">
-                    <img src="internship_thumb.jpg" class="cert-img" alt="Internship" onerror="this.style.display='none'">
+                    <div class="cert-img-container"><img src="nsdc_thumb.jpg" class="cert-img" onerror="this.src='https://via.placeholder.com/400x200/030712/3b82f6?text=NSDC'"></div>
                     <div class="cert-info">
-                        <span style="font-size: 0.8rem; display:block; margin-bottom: 10px;">Marketing Internship</span>
-                        <a href="Internship_Certificate.pdf" target="_blank" class="cert-link">Verify PDF <ion-icon name="document-text-outline"></ion-icon></a>
-                    </div>
-                </div>
-
-                <div class="cert-card">
-                    <img src="nsdc_thumb.jpg" class="cert-img" alt="Ayushman Mitra" onerror="this.style.display='none'">
-                    <div class="cert-info">
-                        <span style="font-size: 0.8rem; display:block; margin-bottom: 10px;">Ayushman Mitra Certification</span>
-                        <a href="Ayushman_Mitra_Certificate.pdf" target="_blank" class="cert-link">Verify PDF <ion-icon name="document-text-outline"></ion-icon></a>
-                    </div>
-                </div>
-
-                <div class="cert-card">
-                    <img src="nsdc_thumb.jpg" class="cert-img" alt="NSDC" onerror="this.style.display='none'">
-                    <div class="cert-info">
-                        <span style="font-size: 0.8rem; display:block; margin-bottom: 10px;">NSDC Web Dev</span>
-                        <a href="Certificate of Course Completion.pdf" target="_blank" class="cert-link">Verify <ion-icon name="open-outline"></ion-icon></a>
-                    </div>
-                </div>
-
-                <div class="cert-card">
-                    <img src="wordpress_thumb.jpg" class="cert-img" alt="WordPress" onerror="this.style.display='none'">
-                    <div class="cert-info">
-                        <span style="font-size: 0.8rem; display:block; margin-bottom: 10px;">WordPress Basics</span>
-                        <a href="Certificate of WordPress Basics.pdf" target="_blank" class="cert-link">Verify <ion-icon name="open-outline"></ion-icon></a>
+                        <span class="cert-title">NSDC Web Dev</span>
+                        <a href="Certificate of Course Completion.pdf" target="_blank" class="cert-link">Verify PDF</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
 
     <footer>
         <div class="container">
-            <a href="Diwakar_Vishwakarma_Resume.pdf" target="_blank" class="btn-main btn-download">
-                <ion-icon name="cloud-download-outline" style="vertical-align: middle; margin-right: 8px;"></ion-icon>
-                Download Full Resume
-            </a>
-            <div style="margin-bottom: 30px;">
-                <div class="copy-pill" onclick="copyEmail()">
-                    <span id="email">diwakarvishwakarma9009@gmail.com</span>
-                    <ion-icon name="copy-outline" style="color: var(--primary);"></ion-icon>
-                </div>
+            <div class="copy-pill" onclick="navigator.clipboard.writeText('diwakarvishwakarma9009@gmail.com'); alert('Email Copied!')">
+                <span>diwakarvishwakarma9009@gmail.com</span>
+                <ion-icon name="copy-outline" style="color: var(--primary);"></ion-icon>
             </div>
-            <div style="display: flex; justify-content: center; gap: 30px; font-size: 2.2rem;">
-                <a href="https://wa.me/916352142750" target="_blank" style="color: #fff;"><ion-icon name="logo-whatsapp"></ion-icon></a>
-                <a href="https://www.linkedin.com/in/diwakar-vishwakarma-095b31160" target="_blank" style="color: #fff;"><ion-icon name="logo-linkedin"></ion-icon></a>
-            </div>
-            <p style="margin-top: 50px; opacity: 0.2; font-family: 'Orbitron'; font-size: 0.6rem; letter-spacing: 4px;"> DRV™ • Gorakhpur, IN </p>
+            <p style="margin-top: 50px; opacity: 0.2; font-family: 'Orbitron'; font-size: 0.6rem;">DRV™ • Gorakhpur, IN</p>
         </div>
     </footer>
 
@@ -322,38 +223,23 @@
         const canvas = document.getElementById('hero-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
-        window.addEventListener('resize', init);
         function init() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            canvas.width = window.innerWidth; canvas.height = window.innerHeight;
             particles = [];
-            for (let i = 0; i < 100; i++) {
-                particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    size: Math.random() * 2,
-                    speed: Math.random() * 0.5 + 0.1
-                });
+            for (let i = 0; i < 80; i++) {
+                particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, size: Math.random() * 2, speed: Math.random() * 0.5 + 0.1 });
             }
         }
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             particles.forEach(p => {
-                p.y -= p.speed;
-                if (p.y < 0) p.y = canvas.height;
-                ctx.fillStyle = '#3b82f6';
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                ctx.fill();
+                p.y -= p.speed; if (p.y < 0) p.y = canvas.height;
+                ctx.fillStyle = '#3b82f6'; ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill();
             });
             requestAnimationFrame(animate);
         }
         init(); animate();
         VanillaTilt.init(document.querySelectorAll(".interactive-card"), { max: 5, speed: 400 });
-        function copyEmail() {
-            navigator.clipboard.writeText("diwakarvishwakarma9009@gmail.com");
-            alert("Email Copied!");
-        }
     </script>
 </body>
 </html>
