@@ -16,7 +16,6 @@
             --border: rgba(255, 255, 255, 0.08);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --accent-glow: rgba(59, 130, 246, 0.5);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -24,7 +23,7 @@
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 25px; }
 
-        /* --- HERO & PARTICLES --- */
+        /* --- HERO & PARTICLES (RESTORED) --- */
         .brand-hero {
             height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
             background: radial-gradient(circle at center, #0a0f1d 0%, #030712 100%);
@@ -49,40 +48,35 @@
             display: flex; align-items: center;
         }
         .nav-links { margin-left: auto; display: flex; gap: 20px; }
-        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; }
-        .nav-links a:hover { color: var(--primary); }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* --- SECTIONS & CARDS --- */
-        section { padding: 80px 0; border-bottom: 1px solid var(--border); }
-        .section-title { font-size: 2rem; font-weight: 800; text-align: center; margin-bottom: 50px; font-family: 'Orbitron'; letter-spacing: 2px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        /* --- SECTIONS --- */
+        section { padding: 100px 0; border-bottom: 1px solid var(--border); }
+        .section-title { font-size: 2.2rem; font-weight: 800; text-align: center; margin-bottom: 60px; font-family: 'Orbitron'; letter-spacing: 3px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
         
         .interactive-card { background: var(--glass); border: 1px solid var(--border); padding: 40px; border-radius: 30px; transform-style: preserve-3d; transition: 0.3s; height: 100%; display: flex; flex-direction: column; }
-        .interactive-card:hover { border-color: var(--primary); box-shadow: 0 0 30px rgba(59, 130, 246, 0.1); }
+        .interactive-card:hover { border-color: var(--primary); box-shadow: 0 0 40px rgba(59, 130, 246, 0.15); }
 
-        .project-img { width: 100%; height: 180px; object-fit: cover; border-radius: 20px; margin-bottom: 25px; border: 1px solid var(--border); transition: 0.3s; }
-        .project-desc { flex-grow: 1; color: var(--text-muted); font-size: 0.85rem; margin-bottom: 25px; }
-
+        .project-img { width: 100%; height: 180px; object-fit: cover; border-radius: 20px; margin-bottom: 25px; border: 1px solid var(--border); }
         .skill-badge { background: rgba(59, 130, 246, 0.1); border: 1px solid var(--border); color: var(--primary); padding: 6px 14px; border-radius: 50px; font-size: 0.7rem; font-weight: 700; margin-right: 5px; margin-bottom: 10px; display: inline-block; }
-        
+
         /* --- GALLERY --- */
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
-        .cert-card { background: var(--glass); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; transition: 0.3s; text-align: center; }
-        .cert-img-container { width: 100%; height: 150px; background: #000; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 25px; }
+        .cert-card { background: var(--glass); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; text-align: center; transition: 0.3s; }
+        .cert-img-container { width: 100%; height: 160px; background: #000; overflow: hidden; display: flex; align-items: center; justify-content: center; }
         .cert-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
-        .cert-info { padding: 15px; }
-        .cert-title { font-size: 0.8rem; display: block; margin-bottom: 12px; font-weight: 700; min-height: 40px; }
-        .cert-link { color: var(--primary); text-decoration: none; font-weight: 800; font-size: 0.7rem; text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 5px; }
+        .cert-info { padding: 20px; }
+        .cert-title { font-size: 0.85rem; font-weight: 700; display: block; margin-bottom: 15px; min-height: 40px; }
+        .cert-link { color: var(--primary); text-decoration: none; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 6px; }
 
-        /* --- FOOTER & CONTACT --- */
+        /* --- FOOTER & SOCIALS --- */
         footer { padding: 100px 0; text-align: center; background: #010409; }
-        .btn-main { padding: 14px 28px; border-radius: 12px; background: var(--primary); color: #fff; text-decoration: none; font-weight: 800; display: inline-block; transition: 0.3s; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; font-size: 0.75rem; width: 100%; text-align: center; }
-        
-        .social-links { display: flex; justify-content: center; gap: 25px; margin-bottom: 40px; }
-        .social-links a { color: var(--text-muted); font-size: 2rem; transition: 0.3s; }
-        .social-links a:hover { color: var(--primary); transform: translateY(-5px); }
-
-        .copy-pill { background: var(--glass); padding: 12px 25px; border-radius: 50px; border: 1px dashed var(--primary); cursor: pointer; display: inline-flex; align-items: center; gap: 12px; color: var(--text-main); }
+        .btn-main { padding: 14px 28px; border-radius: 12px; background: var(--primary); color: #fff; text-decoration: none; font-weight: 800; display: inline-block; transition: 0.3s; border: none; text-transform: uppercase; letter-spacing: 1px; font-size: 0.75rem; width: 100%; }
+        .social-bar { display: flex; justify-content: center; gap: 30px; margin: 40px 0; }
+        .social-icon { font-size: 2.2rem; color: var(--text-muted); transition: 0.3s; }
+        .social-icon:hover { color: var(--primary); transform: translateY(-5px); }
+        .copy-pill { background: var(--glass); padding: 15px 30px; border-radius: 50px; border: 1px dashed var(--primary); cursor: pointer; display: inline-flex; align-items: center; gap: 12px; color: var(--text-main); font-weight: 600; }
 
         @media (max-width: 768px) { .nav-links { display: none; } }
     </style>
@@ -91,11 +85,11 @@
 
     <nav>
         <div class="container" style="display:flex; width:100%; align-items:center;">
-            <a href="#" style="font-family:'Orbitron'; color:#fff; text-decoration:none; font-weight:900; font-size: 1.1rem;">DRV</a>
+            <a href="#" style="font-family:'Orbitron'; color:#fff; text-decoration:none; font-weight:900; font-size: 1.3rem;">DRV</a>
             <div class="nav-links">
                 <a href="#projects">Projects</a>
                 <a href="#internship">Internship</a>
-                <a href="#credentials">Certs</a>
+                <a href="#credentials">Certificates</a>
             </div>
         </div>
     </nav>
@@ -105,7 +99,7 @@
         <div class="hero-content">
             <span class="brand-sub">Automation Architect</span>
             <h1 class="drv-logo">DRV</h1>
-            <p style="font-family: 'Orbitron'; letter-spacing: 5px; font-size: 0.6rem; opacity: 0.5;">INTELLIGENCE & DESIGN</p>
+            <p style="font-family: 'Orbitron'; letter-spacing: 6px; font-size: 0.7rem; opacity: 0.5;">INTELLIGENCE & DESIGN</p>
         </div>
     </header>
 
@@ -114,22 +108,28 @@
             <h2 class="section-title">Automation Ecosystems</h2>
             <div class="grid">
                 <div class="interactive-card" data-tilt>
+                    <img src="toolnova_thumb.jpg" class="project-img" alt="ToolNova" onerror="this.src='https://via.placeholder.com/400x200/030712/3b82f6?text=ToolNova'">
+                    <h3>ToolNova</h3>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 25px;">Advanced digital utility suite for content developers and power users.</p>
+                    <a href="https://tool-nova-pi.vercel.app/" target="_blank" class="btn-main">Open Project</a>
+                </div>
+                <div class="interactive-card" data-tilt>
                     <img src="toppers_thumb.jpg" class="project-img" alt="Toppers Quiz" onerror="this.src='https://via.placeholder.com/400x200/030712/3b82f6?text=Toppers+Quiz'">
                     <h3>Toppers Quiz</h3>
-                    <p class="project-desc">Complete educational portal for students, offering automated GS & Maths resources.</p>
-                    <a href="#" class="btn-main">Visit Toppers Zone</a>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 25px;">Educational automation hub providing syllabus and quizzes for aspirants.</p>
+                    <a href="#" class="btn-main">Launch App</a>
                 </div>
                 <div class="interactive-card" data-tilt>
                     <img src="deals_thumb.jpg" class="project-img" alt="Best Deals India" onerror="this.src='https://via.placeholder.com/400x200/030712/3b82f6?text=Best+Deals+India'">
                     <h3>Best Deals India</h3>
-                    <p class="project-desc">Real-time Amazon deal scraper automated for Telegram and social platforms.</p>
-                    <a href="https://t.me/besst_deals_india" target="_blank" class="btn-main">Telegram Bot</a>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 25px;">Python-powered Amazon deal scraper automated for Telegram channels.</p>
+                    <a href="https://t.me/besst_deals_india" target="_blank" class="btn-main">View Bot</a>
                 </div>
                 <div class="interactive-card" data-tilt>
                     <img src="gyaan_thumb.jpg" class="project-img" alt="Jankari Plus" onerror="this.src='https://via.placeholder.com/400x200/030712/3b82f6?text=Jankari+Plus'">
-                    <h3>Jankari Plus</h3>
-                    <p class="project-desc">Automated Hindi news hub delivering 24/7 factual updates on Blogger.</p>
-                    <a href="https://duniyabharkagyaan.blogspot.com" target="_blank" class="btn-main">Explore Gyaan</a>
+                    <h3>Jankari Plus (Gyaan)</h3>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 25px;">Automated Hindi news engine delivering factual content 24/7.</p>
+                    <a href="https://duniyabharkagyaan.blogspot.com" target="_blank" class="btn-main">Visit Blog</a>
                 </div>
             </div>
         </div>
@@ -142,19 +142,17 @@
                 <div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom: 30px;">
                     <div>
                         <h3 style="color: var(--primary); font-size: 1.8rem;">Digital Marketing Intern</h3>
-                        <p style="font-weight: 700; opacity: 0.9;">Internship Studio | ISO 9001:2015</p>
+                        <p style="font-weight: 700; opacity: 0.9;">Internship Studio (ISO 9001:2015 Certified)</p>
                     </div>
                     <div style="text-align: right;">
                         <span class="skill-badge" style="background: var(--primary); color: #fff;">14 Feb — 21 March 2025</span>
                     </div>
                 </div>
-
                 <div style="margin-bottom: 25px;">
-                    <h4 style="font-family: 'Orbitron'; font-size: 0.7rem; margin-bottom: 15px; color: var(--primary);">SKILLS MASTERED</h4>
+                    <h4 style="font-family: 'Orbitron'; font-size: 0.7rem; margin-bottom: 15px; color: var(--primary);">SKILLS ACQUIRED</h4>
                     <span class="skill-badge">SEO</span> <span class="skill-badge">Content Strategy</span> 
-                    <span class="skill-badge">Data Analytics</span> <span class="skill-badge">Social Media Ads</span>
+                    <span class="skill-badge">Data Analytics</span> <span class="skill-badge">Performance Marketing</span>
                 </div>
-
                 <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 15px;">
                     <a href="Internship_Certificate.pdf" target="_blank" class="btn-main" style="background: rgba(59, 130, 246, 0.1); border: 1px solid var(--border);">Internship Cert</a>
                     <a href="Training_Certificate.pdf" target="_blank" class="btn-main" style="background: rgba(59, 130, 246, 0.1); border: 1px solid var(--border);">Training Cert</a>
@@ -170,14 +168,14 @@
                 <div class="cert-card">
                     <div class="cert-img-container"><img src="infosys_thumb.jpg" class="cert-img" onerror="this.src='https://via.placeholder.com/400x200/030712/3b82f6?text=Infosys'"></div>
                     <div class="cert-info">
-                        <span class="cert-title">Infosys: Digital Marketing</span>
+                        <span class="cert-title">Infosys Springboard</span>
                         <a href="Certificate of Digital Marketing Training.pdf" target="_blank" class="cert-link">Verify PDF</a>
                     </div>
                 </div>
                 <div class="cert-card">
                     <div class="cert-img-container"><img src="ayushman_thumb.jpg" class="cert-img" onerror="this.src='https://via.placeholder.com/400x200/030712/3b82f6?text=Ayushman+Mitra'"></div>
                     <div class="cert-info">
-                        <span class="cert-title">Ayushman Mitra Cert</span>
+                        <span class="cert-title">Ayushman Mitra</span>
                         <a href="Ayushman_Mitra_Certificate.pdf" target="_blank" class="cert-link">Verify PDF</a>
                     </div>
                 </div>
@@ -195,31 +193,35 @@
                         <a href="Certificate of WordPress Basics.pdf" target="_blank" class="cert-link">Verify PDF</a>
                     </div>
                 </div>
+                <div class="cert-card">
+                    <div class="cert-img-container"><img src="marketing_thumb.jpg" class="cert-img" onerror="this.src='https://via.placeholder.com/400x200/030712/3b82f6?text=Marketing'"></div>
+                    <div class="cert-info">
+                        <span class="cert-title">Marketing Strategy</span>
+                        <a href="Internship_Certificate.pdf" target="_blank" class="cert-link">Verify PDF</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <h2 class="section-title" style="margin-bottom: 40px;">Get In Touch</h2>
-            
-            <div class="social-links">
-                <a href="https://wa.me/+91 6352142750" target="_blank"><ion-icon name="logo-whatsapp"></ion-icon></a>
-                <a href="https://www.linkedin.com/in/diwakar-vishwakarma-095b31160" target="_blank"><ion-icon name="logo-linkedin"></ion-icon></a>
-                <a href="mailto:diwakarvishwakarma9009@gmail.com"><ion-icon name="mail-outline"></ion-icon></a>
+            <h2 class="section-title" style="margin-bottom: 20px;">Let's Connect</h2>
+            <div class="social-bar">
+                <a href="https://linkedin.com/in/diwakar-drv" target="_blank" class="social-icon"><ion-icon name="logo-linkedin"></ion-icon></a>
+                <a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="social-icon"><ion-icon name="logo-whatsapp"></ion-icon></a>
+                <a href="mailto:diwakarvishwakarma9009@gmail.com" class="social-icon"><ion-icon name="mail-outline"></ion-icon></a>
             </div>
-
             <div class="copy-pill" onclick="navigator.clipboard.writeText('diwakarvishwakarma9009@gmail.com'); alert('Email Copied!')">
                 <span>diwakarvishwakarma9009@gmail.com</span>
                 <ion-icon name="copy-outline" style="color: var(--primary);"></ion-icon>
             </div>
-            
-            <p style="margin-top: 60px; opacity: 0.2; font-family: 'Orbitron'; font-size: 0.6rem;">DRV™ • SINCE • 1997</p>
+            <p style="margin-top: 60px; opacity: 0.2; font-family: 'Orbitron'; font-size: 0.6rem;">DRV™ • GORAKHPUR • 2026</p>
         </div>
     </footer>
 
     <script>
-        // BACKGROUND PARTICLES RESTORED
+        // BACKGROUND PARTICLES (RESTORED)
         const canvas = document.getElementById('hero-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -239,8 +241,6 @@
             requestAnimationFrame(animate);
         }
         init(); animate();
-
-        // TILT EFFECT
         VanillaTilt.init(document.querySelectorAll(".interactive-card"), { max: 5, speed: 400, glare: true, "max-glare": 0.1 });
     </script>
 </body>
