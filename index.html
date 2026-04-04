@@ -16,6 +16,7 @@
             --border: rgba(255, 255, 255, 0.08);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
+            --accent-glow: rgba(59, 130, 246, 0.5);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -23,42 +24,65 @@
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 25px; }
 
-        /* Navigation */
-        nav { position: fixed; top: 0; width: 100%; height: 75px; z-index: 1000; background: rgba(3, 7, 18, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); display: flex; align-items: center; }
-        .nav-content { display: flex; width: 100%; align-items: center; justify-content: space-between; }
-        .nav-links { display: flex; gap: 20px; }
-        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; }
+        /* --- HERO & PARTICLES --- */
+        .brand-hero {
+            height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            background: radial-gradient(circle at center, #0a0f1d 0%, #030712 100%);
+            position: relative; overflow: hidden;
+        }
+        #hero-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; opacity: 0.6; }
+        .hero-content { position: relative; z-index: 2; text-align: center; }
 
-        /* Hero Section */
-        .brand-hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: radial-gradient(circle at center, #0a0f1d 0%, #030712 100%); position: relative; }
-        .drv-logo { font-family: 'Orbitron', sans-serif; font-size: clamp(4rem, 12vw, 10rem); font-weight: 900; background: linear-gradient(to bottom, #fff 40%, var(--primary) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 15px; line-height: 1; }
+        .drv-logo {
+            font-family: 'Orbitron', sans-serif; font-size: clamp(4.5rem, 15vw, 11rem); font-weight: 900;
+            background: linear-gradient(to bottom, #fff 40%, var(--primary) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            letter-spacing: 15px; filter: drop-shadow(0 0 25px rgba(59, 130, 246, 0.4));
+            line-height: 1; margin-bottom: 25px;
+        }
+        .brand-sub { font-family: 'Orbitron'; letter-spacing: 10px; font-size: 0.8rem; color: #fff; text-transform: uppercase; display: block; margin-bottom: 8px; opacity: 0.7; }
 
-        /* Global Section Styles */
-        section { padding: 100px 0; border-bottom: 1px solid var(--border); }
-        .section-title { font-size: 2.2rem; font-weight: 800; text-align: center; margin-bottom: 60px; font-family: 'Orbitron'; letter-spacing: 3px; color: #fff; }
-        
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed; top: 0; width: 100%; height: 75px; z-index: 1000;
+            background: rgba(3, 7, 18, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);
+            display: flex; align-items: center;
+        }
+        .nav-links { margin-left: auto; display: flex; gap: 20px; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* --- SECTIONS & CARDS --- */
+        section { padding: 80px 0; border-bottom: 1px solid var(--border); }
+        .section-title { font-size: 2rem; font-weight: 800; text-align: center; margin-bottom: 50px; font-family: 'Orbitron'; letter-spacing: 2px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .interactive-card { background: var(--glass); border: 1px solid var(--border); padding: 35px; border-radius: 25px; transition: 0.4s; height: 100%; position: relative; overflow: hidden; }
-        .interactive-card:hover { border-color: var(--primary); background: rgba(59, 130, 246, 0.02); }
+        
+        .interactive-card { background: var(--glass); border: 1px solid var(--border); padding: 40px; border-radius: 30px; transform-style: preserve-3d; transition: 0.3s; height: 100%; display: flex; flex-direction: column; }
+        .interactive-card:hover { border-color: var(--primary); box-shadow: 0 0 30px rgba(59, 130, 246, 0.1); }
 
-        /* Internship Specific Styling */
-        .internship-card { border-left: 4px solid var(--primary); background: linear-gradient(145deg, rgba(59, 130, 246, 0.05), transparent); }
-        .skill-badge { background: rgba(59, 130, 246, 0.1); border: 1px solid var(--border); padding: 5px 12px; border-radius: 50px; font-size: 0.7rem; margin: 4px; display: inline-block; color: var(--primary); font-weight: 700; }
+        .project-img { width: 100%; height: 180px; object-fit: cover; border-radius: 20px; margin-bottom: 25px; border: 1px solid var(--border); transition: 0.3s; }
+        .project-desc { flex-grow: 1; color: var(--text-muted); font-size: 0.85rem; margin-bottom: 25px; }
 
-        /* Certificate Gallery Styles */
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 25px; }
-        .cert-card { background: var(--glass); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; transition: 0.3s; }
-        .cert-img-container { width: 100%; height: 160px; background: #000; display: flex; align-items: center; justify-content: center; }
+        .skill-badge { background: rgba(59, 130, 246, 0.1); border: 1px solid var(--border); color: var(--primary); padding: 6px 14px; border-radius: 50px; font-size: 0.7rem; font-weight: 700; margin-right: 5px; margin-bottom: 10px; display: inline-block; }
+        
+        /* --- GALLERY --- */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+        .cert-card { background: var(--glass); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; transition: 0.3s; text-align: center; }
+        .cert-img-container { width: 100%; height: 150px; background: #000; overflow: hidden; display: flex; align-items: center; justify-content: center; }
         .cert-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
-        .cert-info { padding: 20px; text-align: center; }
-        .cert-title { font-size: 0.85rem; font-weight: 700; margin-bottom: 15px; display: block; color: var(--text-main); }
-        .cert-link { color: var(--primary); text-decoration: none; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 6px; }
+        .cert-info { padding: 15px; }
+        .cert-title { font-size: 0.8rem; display: block; margin-bottom: 12px; font-weight: 700; min-height: 40px; }
+        .cert-link { color: var(--primary); text-decoration: none; font-weight: 800; font-size: 0.7rem; text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 5px; }
 
-        /* Buttons & Socials */
-        .btn-main { padding: 14px 25px; border-radius: 12px; background: var(--primary); color: #fff; text-decoration: none; font-weight: 800; display: block; text-align: center; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; margin-top: 15px; }
-        .social-bar { display: flex; justify-content: center; gap: 20px; margin-top: 40px; }
-        .social-icon { font-size: 1.8rem; color: var(--text-muted); transition: 0.3s; }
-        .social-icon:hover { color: var(--primary); transform: translateY(-5px); }
+        /* --- FOOTER & CONTACT --- */
+        footer { padding: 100px 0; text-align: center; background: #010409; }
+        .btn-main { padding: 14px 28px; border-radius: 12px; background: var(--primary); color: #fff; text-decoration: none; font-weight: 800; display: inline-block; transition: 0.3s; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; font-size: 0.75rem; width: 100%; text-align: center; }
+        
+        .social-links { display: flex; justify-content: center; gap: 25px; margin-bottom: 40px; }
+        .social-links a { color: var(--text-muted); font-size: 2rem; transition: 0.3s; }
+        .social-links a:hover { color: var(--primary); transform: translateY(-5px); }
+
+        .copy-pill { background: var(--glass); padding: 12px 25px; border-radius: 50px; border: 1px dashed var(--primary); cursor: pointer; display: inline-flex; align-items: center; gap: 12px; color: var(--text-main); }
 
         @media (max-width: 768px) { .nav-links { display: none; } }
     </style>
@@ -66,72 +90,69 @@
 <body>
 
     <nav>
-        <div class="container nav-content">
-            <a href="#" style="font-family:'Orbitron'; color:#fff; text-decoration:none; font-weight:900; font-size: 1.2rem;">DRV</a>
+        <div class="container" style="display:flex; width:100%; align-items:center;">
+            <a href="#" style="font-family:'Orbitron'; color:#fff; text-decoration:none; font-weight:900; font-size: 1.1rem;">DRV</a>
             <div class="nav-links">
                 <a href="#projects">Projects</a>
                 <a href="#internship">Internship</a>
-                <a href="#credentials">Certificates</a>
+                <a href="#credentials">Certs</a>
             </div>
         </div>
     </nav>
 
     <header class="brand-hero">
-        <div class="hero-content" style="text-align: center;">
-            <span style="font-family: 'Orbitron'; letter-spacing: 8px; font-size: 0.7rem; opacity: 0.6;">ESTABLISHED 2024</span>
+        <canvas id="hero-canvas"></canvas>
+        <div class="hero-content">
+            <span class="brand-sub">Automation Architect</span>
             <h1 class="drv-logo">DRV</h1>
-            <p style="letter-spacing: 4px; font-weight: 300; color: var(--text-muted); margin-top: 10px;">AUTOMATION & CONTENT ARCHITECT</p>
+            <p style="font-family: 'Orbitron'; letter-spacing: 5px; font-size: 0.6rem; opacity: 0.5;">INTELLIGENCE & DESIGN</p>
         </div>
     </header>
 
     <section id="projects">
         <div class="container">
-            <h2 class="section-title">Automation Projects</h2>
+            <h2 class="section-title">Automation Ecosystems</h2>
             <div class="grid">
                 <div class="interactive-card" data-tilt>
-                    <ion-icon name="flash-outline" style="font-size: 2.5rem; color: var(--primary);"></ion-icon>
-                    <h3 style="margin: 20px 0 10px;">Toppers Quiz</h3>
-                    [span_0](start_span)[span_1](start_span)<p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px;">Comprehensive educational platform providing GS, Reasoning, and Maths resources for exam aspirants[span_0](end_span)[span_1](end_span).</p>
-                    <a href="#" class="btn-main">View Platform</a>
+                    <img src="toppers_thumb.jpg" class="project-img" alt="Toppers Quiz" onerror="this.src='https://via.placeholder.com/400x200/030712/3b82f6?text=Toppers+Quiz'">
+                    <h3>Toppers Quiz</h3>
+                    <p class="project-desc">Complete educational portal for students, offering automated GS & Maths resources.</p>
+                    <a href="#" class="btn-main">Visit Toppers Zone</a>
                 </div>
                 <div class="interactive-card" data-tilt>
-                    <ion-icon name="cart-outline" style="font-size: 2.5rem; color: var(--primary);"></ion-icon>
-                    <h3 style="margin: 20px 0 10px;">Best Deals India</h3>
-                    [span_2](start_span)[span_3](start_span)<p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px;">Automated affiliate engine scraping Amazon deals directly to Telegram channels[span_2](end_span)[span_3](end_span).</p>
+                    <img src="deals_thumb.jpg" class="project-img" alt="Best Deals India" onerror="this.src='https://via.placeholder.com/400x200/030712/3b82f6?text=Best+Deals+India'">
+                    <h3>Best Deals India</h3>
+                    <p class="project-desc">Real-time Amazon deal scraper automated for Telegram and social platforms.</p>
                     <a href="https://t.me/besst_deals_india" target="_blank" class="btn-main">Telegram Bot</a>
                 </div>
                 <div class="interactive-card" data-tilt>
-                    <ion-icon name="globe-outline" style="font-size: 2.5rem; color: var(--primary);"></ion-icon>
-                    <h3 style="margin: 20px 0 10px;">Jankari Plus</h3>
-                    [span_4](start_span)[span_5](start_span)<p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px;">Auto-blogging system focusing on Hindi news and 24/7 factual content automation[span_4](end_span)[span_5](end_span).</p>
-                    <a href="https://duniyabharkagyaan.blogspot.com" target="_blank" class="btn-main">Explore Blog</a>
+                    <img src="gyaan_thumb.jpg" class="project-img" alt="Jankari Plus" onerror="this.src='https://via.placeholder.com/400x200/030712/3b82f6?text=Jankari+Plus'">
+                    <h3>Jankari Plus</h3>
+                    <p class="project-desc">Automated Hindi news hub delivering 24/7 factual updates on Blogger.</p>
+                    <a href="https://duniyabharkagyaan.blogspot.com" target="_blank" class="btn-main">Explore Gyaan</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="internship" style="background: rgba(59, 130, 246, 0.01);">
+    <section id="internship" style="background: rgba(59, 130, 246, 0.02);">
         <div class="container">
             <h2 class="section-title">Professional Internship</h2>
-            <div class="interactive-card internship-card" style="max-width: 900px; margin: 0 auto;">
-                <div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom: 25px;">
+            <div class="interactive-card" data-tilt style="max-width: 950px; margin: 0 auto; border-left: 5px solid var(--primary);">
+                <div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom: 30px;">
                     <div>
-                        <h3 style="color: var(--primary); font-size: 1.5rem;">Digital Marketing Intern</h3>
-                        <p style="font-weight: 600;">Internship Studio (iStudio)</p>
-                        [span_6](start_span)[span_7](start_span)[span_8](start_span)<p style="font-size: 0.8rem; color: var(--text-muted);">ISO 9001:2015 Certified Organization[span_6](end_span)[span_7](end_span)[span_8](end_span)</p>
+                        <h3 style="color: var(--primary); font-size: 1.8rem;">Digital Marketing Intern</h3>
+                        <p style="font-weight: 700; opacity: 0.9;">Internship Studio | ISO 9001:2015</p>
                     </div>
                     <div style="text-align: right;">
-                        [span_9](start_span)[span_10](start_span)<p style="font-size: 0.8rem; font-weight: 800; color: var(--primary);">14 FEB — 21 MARCH 2025[span_9](end_span)[span_10](end_span)</p>
+                        <span class="skill-badge" style="background: var(--primary); color: #fff;">14 Feb — 21 March 2025</span>
                     </div>
                 </div>
 
-                <div style="margin-bottom: 30px;">
-                    <h4 style="font-size: 0.75rem; font-family: 'Orbitron'; margin-bottom: 15px;">SKILLS ACQUIRED:</h4>
-                    <span class="skill-badge">SEO Strategy</span>
-                    <span class="skill-badge">Content Marketing</span>
-                    <span class="skill-badge">Data Analytics</span>
-                    <span class="skill-badge">Campaign Management</span>
-                    <span class="skill-badge">Performance Marketing</span>
+                <div style="margin-bottom: 25px;">
+                    <h4 style="font-family: 'Orbitron'; font-size: 0.7rem; margin-bottom: 15px; color: var(--primary);">SKILLS MASTERED</h4>
+                    <span class="skill-badge">SEO</span> <span class="skill-badge">Content Strategy</span> 
+                    <span class="skill-badge">Data Analytics</span> <span class="skill-badge">Social Media Ads</span>
                 </div>
 
                 <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 15px;">
@@ -147,38 +168,31 @@
             <h2 class="section-title">Verified Gallery</h2>
             <div class="gallery-grid">
                 <div class="cert-card">
-                    <div class="cert-img-container"><img src="infosys_thumb.jpg" class="cert-img" onerror="this.src='https://via.placeholder.com/400x200/030712/3b82f6?text=Infosys+Springboard'"></div>
+                    <div class="cert-img-container"><img src="infosys_thumb.jpg" class="cert-img" onerror="this.src='https://via.placeholder.com/400x200/030712/3b82f6?text=Infosys'"></div>
                     <div class="cert-info">
                         <span class="cert-title">Infosys: Digital Marketing</span>
-                        <a href="Certificate of Digital Marketing Training.pdf" target="_blank" class="cert-link">Verify PDF <ion-icon name="document-text-outline"></ion-icon></a>
-                    </div>
-                </div>
-                <div class="cert-card">
-                    <div class="cert-img-container"><img src="internship_thumb.jpg" class="cert-img" onerror="this.src='https://via.placeholder.com/400x200/030712/3b82f6?text=Marketing+Internship'"></div>
-                    <div class="cert-info">
-                        <span class="cert-title">Marketing Internship</span>
-                        <a href="Internship_Certificate.pdf" target="_blank" class="cert-link">Verify PDF <ion-icon name="document-text-outline"></ion-icon></a>
+                        <a href="Certificate of Digital Marketing Training.pdf" target="_blank" class="cert-link">Verify PDF</a>
                     </div>
                 </div>
                 <div class="cert-card">
                     <div class="cert-img-container"><img src="ayushman_thumb.jpg" class="cert-img" onerror="this.src='https://via.placeholder.com/400x200/030712/3b82f6?text=Ayushman+Mitra'"></div>
                     <div class="cert-info">
-                        <span class="cert-title">Ayushman Mitra Certification</span>
-                        <a href="Ayushman_Mitra_Certificate.pdf" target="_blank" class="cert-link">Verify PDF <ion-icon name="document-text-outline"></ion-icon></a>
+                        <span class="cert-title">Ayushman Mitra Cert</span>
+                        <a href="Ayushman_Mitra_Certificate.pdf" target="_blank" class="cert-link">Verify PDF</a>
                     </div>
                 </div>
                 <div class="cert-card">
-                    <div class="cert-img-container"><img src="nsdc_thumb.jpg" class="cert-img" onerror="this.src='https://via.placeholder.com/400x200/030712/3b82f6?text=NSDC+Web+Dev'"></div>
+                    <div class="cert-img-container"><img src="nsdc_thumb.jpg" class="cert-img" onerror="this.src='https://via.placeholder.com/400x200/030712/3b82f6?text=NSDC'"></div>
                     <div class="cert-info">
-                        <span class="cert-title">NSDC Web Dev</span>
-                        <a href="Certificate of Course Completion.pdf" target="_blank" class="cert-link">Verify <ion-icon name="open-outline"></ion-icon></a>
+                        <span class="cert-title">NSDC Web Development</span>
+                        <a href="Certificate of Course Completion.pdf" target="_blank" class="cert-link">Verify PDF</a>
                     </div>
                 </div>
                 <div class="cert-card">
-                    <div class="cert-img-container"><img src="wordpress_thumb.jpg" class="cert-img" onerror="this.src='https://via.placeholder.com/400x200/030712/3b82f6?text=WordPress+Basics'"></div>
+                    <div class="cert-img-container"><img src="wordpress_thumb.jpg" class="cert-img" onerror="this.src='https://via.placeholder.com/400x200/030712/3b82f6?text=WordPress'"></div>
                     <div class="cert-info">
-                        <span class="cert-title">WordPress Basics</span>
-                        <a href="Certificate of WordPress Basics.pdf" target="_blank" class="cert-link">Verify <ion-icon name="open-outline"></ion-icon></a>
+                        <span class="cert-title">WordPress Mastery</span>
+                        <a href="Certificate of WordPress Basics.pdf" target="_blank" class="cert-link">Verify PDF</a>
                     </div>
                 </div>
             </div>
@@ -186,18 +200,47 @@
     </section>
 
     <footer>
-        <div class="container" style="text-align: center; padding: 60px 0;">
-            <h2 style="font-family: 'Orbitron'; margin-bottom: 20px;">Let's Connect</h2>
-            <div class="social-bar">
-                <a href="https://linkedin.com/in/yourprofile" target="_blank" class="social-icon"><ion-icon name="logo-linkedin"></ion-icon></a>
-                <a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="social-icon"><ion-icon name="logo-whatsapp"></ion-icon></a>
-                <a href="mailto:diwakarvishwakarma9009@gmail.com" class="social-icon"><ion-icon name="mail-outline"></ion-icon></a>
+        <div class="container">
+            <h2 class="section-title" style="margin-bottom: 40px;">Get In Touch</h2>
+            
+            <div class="social-links">
+                <a href="https://wa.me/+91 6352142750" target="_blank"><ion-icon name="logo-whatsapp"></ion-icon></a>
+                <a href="https://www.linkedin.com/in/diwakar-vishwakarma-095b31160" target="_blank"><ion-icon name="logo-linkedin"></ion-icon></a>
+                <a href="mailto:diwakarvishwakarma9009@gmail.com"><ion-icon name="mail-outline"></ion-icon></a>
             </div>
-            <p style="margin-top: 40px; color: var(--text-muted); font-size: 0.7rem; font-family: 'Orbitron';">DRV™ • GORAKHPUR • 2026</p>
+
+            <div class="copy-pill" onclick="navigator.clipboard.writeText('diwakarvishwakarma9009@gmail.com'); alert('Email Copied!')">
+                <span>diwakarvishwakarma9009@gmail.com</span>
+                <ion-icon name="copy-outline" style="color: var(--primary);"></ion-icon>
+            </div>
+            
+            <p style="margin-top: 60px; opacity: 0.2; font-family: 'Orbitron'; font-size: 0.6rem;">DRV™ • SINCE • 1997</p>
         </div>
     </footer>
 
     <script>
+        // BACKGROUND PARTICLES RESTORED
+        const canvas = document.getElementById('hero-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        function init() {
+            canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+            particles = [];
+            for (let i = 0; i < 80; i++) {
+                particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, size: Math.random() * 2, speed: Math.random() * 0.5 + 0.1 });
+            }
+        }
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.y -= p.speed; if (p.y < 0) p.y = canvas.height;
+                ctx.fillStyle = '#3b82f6'; ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill();
+            });
+            requestAnimationFrame(animate);
+        }
+        init(); animate();
+
+        // TILT EFFECT
         VanillaTilt.init(document.querySelectorAll(".interactive-card"), { max: 5, speed: 400, glare: true, "max-glare": 0.1 });
     </script>
 </body>
