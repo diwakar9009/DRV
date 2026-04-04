@@ -64,14 +64,8 @@
         .interactive-card:hover .project-img { opacity: 1; border-color: var(--primary); }
         .project-desc { flex-grow: 1; color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px; }
 
-        /* Skills Progress */
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; }
-        .skill-item { margin-bottom: 20px; }
-        .skill-info { display: flex; justify-content: space-between; margin-bottom: 8px; font-family: 'Orbitron'; font-size: 0.7rem; }
-        .progress-bar { width: 100%; height: 8px; background: rgba(255, 255, 255, 0.05); border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
-        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--primary), #60a5fa); box-shadow: 0 0 10px var(--primary); border-radius: 10px; transition: 1.5s ease-in-out; }
-
-.skill-tag {
+        /* Skill Tags */
+        .skill-tag {
             background: rgba(59, 130, 246, 0.1);
             border: 1px solid var(--border);
             color: var(--text-main);
@@ -87,6 +81,7 @@
             border-color: var(--primary);
             box-shadow: 0 0 15px var(--primary);
             transform: translateY(-2px);
+        }
 
         /* Timeline */
         .timeline { max-width: 800px; margin: 0 auto; border-left: 2px solid var(--border); padding-left: 40px; }
@@ -107,8 +102,7 @@
         footer { padding: 80px 0; text-align: center; background: #010409; }
         .btn-main { padding: 12px 28px; border-radius: 10px; background: var(--primary); color: #fff; text-decoration: none; font-weight: 800; display: inline-block; transition: 0.3s; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; font-size: 0.75rem; width: 100%; text-align: center; }
         .btn-main:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3); }
-        
-        /* Specialized Blog Button */
+
         .btn-blog { background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%); border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 0 15px var(--accent-glow); }
         .btn-blog:hover { box-shadow: 0 0 25px var(--primary); }
 
@@ -149,9 +143,8 @@
             <div class="interactive-card" data-tilt data-tilt-max="2" style="max-width: 850px; margin: 0 auto; text-align: center;">
                 <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">
                     Dynamic professional with over 6 years of experience in International Operations and Technical Automation. 
-                    I specialize in bridging the gap between customer engagement and cutting-edge technology. 
-                    My expertise lies in building Agentic AI workflows and Python-based bots that eliminate manual tasks in affiliate marketing and content creation. 
-                    I am a results-driven individual who has successfully transitioned from traditional customer support to developing full-scale automated digital ecosystems.
+                    I specialize in building Agentic AI workflows and Python-based bots that eliminate manual tasks.
+                    Successfully transitioned from traditional customer support to developing full-scale automated digital ecosystems.
                 </p>
             </div>
         </div>
@@ -196,37 +189,44 @@
             <h2 class="section-title">Core Proficiencies</h2>
             <div class="skills-grid">
                 <div class="interactive-card" data-tilt>
-                    <h4 style="color:var(--primary); margin-bottom: 20px; font-family: 'Orbitron'; font-size: 0.8rem;">Technical Skills</h4>
-                    <div class="skill-item">
-                        <div class="skill-info"><span>Python Automation</span><span>90%</span></div>
-                        <div class="progress-bar"><div class="progress-fill" style="width: 90%;"></div></div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info"><span>Telegram Bot API</span><span>95%</span></div>
-                        <div class="progress-bar"><div class="progress-fill" style="width: 95%;"></div></div>
+                    <h4 style="color:var(--primary); margin-bottom: 20px; font-family: 'Orbitron'; font-size: 0.8rem; letter-spacing: 2px;">TECHNICAL & AUTOMATION</h4>
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">GitHub Actions</span>
+                        <span class="skill-tag">Telegram Bot API</span>
+                        <span class="skill-tag">Web Scraping</span>
+                        <span class="skill-tag">Agentic AI</span>
+                        <span class="skill-tag">SEO</span>
+                        <span class="skill-tag">WordPress Dev</span>
+                        <span class="skill-tag">Full-Stack Prompting</span>
+                        <span class="skill-tag">Git/GitHub</span>
                     </div>
                 </div>
+
                 <div class="interactive-card" data-tilt>
-                    <h4 style="color:var(--primary); margin-bottom: 20px; font-family: 'Orbitron'; font-size: 0.8rem;">Professional Skills</h4>
-                    <div class="skill-item">
-                        <div class="skill-info"><span>Back-Office Ops</span><span>95%</span></div>
-                        <div class="progress-bar"><div class="progress-fill" style="width: 95%;"></div></div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info"><span>Digital Marketing</span><span>80%</span></div>
-                        <div class="progress-bar"><div class="progress-fill" style="width: 80%;"></div></div>
+                    <h4 style="color:var(--primary); margin-bottom: 20px; font-family: 'Orbitron'; font-size: 0.8rem; letter-spacing: 2px;">OPERATIONS & MANAGEMENT</h4>
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                        <span class="skill-tag">Back-Office Ops</span>
+                        <span class="skill-tag">Customer Support</span>
+                        <span class="skill-tag">Digital Marketing</span>
+                        <span class="skill-tag">CRM (Salesforce/Zendesk)</span>
+                        <span class="skill-tag">Ayushman Bharat Portal</span>
+                        <span class="skill-tag">Data Analysis</span>
+                        <span class="skill-tag">Affiliate Marketing</span>
+                        <span class="skill-tag">Social Media Strategy</span>
+                        <span class="skill-tag">Team Collaboration</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-       <section id="experience">
+    <section id="experience">
         <div class="container">
             <h2 class="section-title">Professional Journey</h2>
             <div class="timeline">
                 <div class="exp-item">
-                    <span class="exp-date">14th February, 2025 to 21st March, 2025.</span>
+                    <span class="exp-date">Feb 2025 — March 2025</span>
                     <h3>Digital Marketing Intern</h3>
                     <p style="color: var(--primary); font-weight: 600;">Full-Stack Marketing & SEO</p>
                 </div>
@@ -244,42 +244,7 @@
         </div>
     </section>
 
-<section id="skills">
-        <div class="container">
-            <h2 class="section-title">Core Proficiencies</h2>
-            
-            <div class="skills-grid">
-                <div class="interactive-card" data-tilt>
-                    <h4 style="color:var(--primary); margin-bottom: 20px; font-family: 'Orbitron'; font-size: 0.8rem; letter-spacing: 2px;">TECHNICAL & AUTOMATION</h4>
-                    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">GitHub Actions</span>
-                        <span class="skill-tag">Telegram Bot API</span>
-                        <span class="skill-tag">Web Scraping</span>
-                        <span class="skill-tag">Automation Logic</span>
-                        <span class="skill-tag">SEO</span>
-                        <span class="skill-tag">WordPress Dev</span>
-                        <span class="skill-tag">Full-Stack Prompting</span>
-                    </div>
-                </div>
-
-                <div class="interactive-card" data-tilt>
-                    <h4 style="color:var(--primary); margin-bottom: 20px; font-family: 'Orbitron'; font-size: 0.8rem; letter-spacing: 2px;">OPERATIONS & STRATEGY</h4>
-                    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-                        <span class="skill-tag">Back-Office Ops</span>
-                        <span class="skill-tag">Customer Support</span>
-                        <span class="skill-tag">Digital Marketing</span>
-                        <span class="skill-tag">CRM Management</span>
-                        <span class="skill-tag">Ayushman Bharat Portal</span>
-                        <span class="skill-tag">Data Accuracy</span>
-                        <span class="skill-tag">Content Strategy</span>
-                        <span class="skill-tag">Affiliate Marketing</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-           <section id="credentials">
+    <section id="credentials">
         <div class="container">
             <h2 class="section-title">Verified Gallery</h2>
             <div class="gallery-grid">
@@ -295,7 +260,7 @@
                     <img src="ayushman_thumb.jpg" class="cert-img" alt="Ayushman Mitra" onerror="this.style.display='none'">
                     <div class="cert-info">
                         <span style="font-size: 0.8rem; display:block; margin-bottom: 10px;">Ayushman Mitra Certification</span>
-                        <a href="https://drive.google.com/file/d/18orFKMsK8M51ZiqvEeUaaAJau8GmwOj0/view?usp=drivesdk" target="_blank" class="cert-link">Verify PDF <ion-icon name="document-text-outline"></ion-icon></a>
+                        <a href="https://drive.google.com/file/d/18orFKMsK8M51ZiqvEeUaaAJau8GmwOj0/view?usp=drivesdk" target="_blank" class="cert-link">Verify <ion-icon name="open-outline"></ion-icon></a>
                     </div>
                 </div>
 
@@ -326,8 +291,6 @@
         </div>
     </section>
 
-
-
     <footer>
         <div class="container">
             <a href="Diwakar_Vishwakarma_Resume.pdf" target="_blank" class="btn-main btn-download">
@@ -344,7 +307,7 @@
                 <a href="https://wa.me/916352142750" target="_blank" style="color: #fff;"><ion-icon name="logo-whatsapp"></ion-icon></a>
                 <a href="https://www.linkedin.com/in/diwakar-vishwakarma-095b31160" target="_blank" style="color: #fff;"><ion-icon name="logo-linkedin"></ion-icon></a>
             </div>
-            <p style="margin-top: 50px; opacity: 0.2; font-family: 'Orbitron'; font-size: 0.6rem; letter-spacing: 4px;"> DRV™ • SINCE 1997 </p>
+            <p style="margin-top: 50px; opacity: 0.2; font-family: 'Orbitron'; font-size: 0.6rem; letter-spacing: 4px;"> DRV™ • Gorakhpur, IN </p>
         </div>
     </footer>
 
